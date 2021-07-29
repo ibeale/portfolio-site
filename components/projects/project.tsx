@@ -56,3 +56,25 @@ export const HoopFinderProps: ProjectProps = {
     ],
     link: "https://hoop-finder.web.app"
 };
+
+export const SolverProps: ProjectProps = {
+    name: "Pathfinding Algorithm Visualizer",
+    description: "HoopFinder is an interactive crowd sourced database of basketball hoops around the world. \
+    The project was built for basketball players to share and discover lesser known basketball \
+    hoops, with the hope to encourage more players to get out and play. To use this app, a user\
+    logs into the application using Google's OAuth service. From there the user can browse the world\
+    for basketball hoops near them with the search bar or the \"center on your location\"\
+    feature at the bottom. The user may also add hoops by enabling \"add hoop mode.\" Once this mode\
+    is enabled, clicking anywhere on the map promps the user to describe the hoop they created and save it.\
+    Thanks to Google Firebase Realtime Database, new hoops and deleted hoops are immediately broadcasted \
+    to all users online allowing for real-time information. In the future, I would like to add features that\
+    would allow users to schedule games of pickup with real time park information.",
+    filePaths: [
+        "/images/solver/solver1.png",
+        "/images/solver/solver2.png",
+        "/images/solver/solver3.png",
+        "/images/solver/solver4.png",
+        "/images/solver/solver5.png",
+    ],
+    link: "https://github.com/ibeale/graph-algo-visualizer"
+};
