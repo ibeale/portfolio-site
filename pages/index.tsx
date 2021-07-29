@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Container, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 import About from "../components/about";
-import Project from "../components/projects/project";
+import Project, { SolverProps } from "../components/projects/project";
 import Projects from "../components/projects/projects";
 import Section from "../components/section";
 import Skills from "../components/skills"
@@ -62,6 +62,7 @@ export default function HomePage() {
           <Section refProp={projectsRef}>
             <Projects>
               <Project {...HoopFinderProps} />
+              <Project {...SolverProps}/>
             </Projects>
           </Section>
         </Col>
