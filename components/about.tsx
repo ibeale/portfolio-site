@@ -6,6 +6,7 @@ import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 library.add(fab)
 
@@ -25,12 +26,13 @@ export default function About() {
         <div className="social-icons d-flex justify-content-center mt-5">
             <a className="social-icon" href="https://www.linkedin.com/in/isaac-beale-04bb80191/" target="_blank"><FontAwesomeIcon icon={["fab","linkedin"]} /></a>
             <a className="social-icon" href="https://www.github.com/ibeale" target="_blank"><FontAwesomeIcon icon={["fab","github"]} /></a>
+            <a className="social-icon" href="mailto:isaacdbeale@gmail.com" target="_blank"><FontAwesomeIcon icon={faEnvelope} /></a>
         </div>
         
           
       </Col>
       <Col>
-        <h1 >About Me
+        <h1 >Isaac
           <svg className="section-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 30" x="0px" y="0px">
             <g data-name="bio user">
               <path fill="#343a40" d="M8,12a4,4,0,1,1,4-4A4,4,0,0,1,8,12ZM8,6a2,2,0,1,0,2,2A2,2,0,0,0,8,6Z"/>
