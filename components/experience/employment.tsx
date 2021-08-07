@@ -41,7 +41,8 @@ export default function Employment() {
                                                 body:  <>
                                                             {"Implemented with "}
                                                             <a href="https://react-table.tanstack.com"
-                                                                target="_blank">React Table</a>
+                                                                target="_blank"
+                                                                rel="noreferrer">React Table</a>
                                                             {" which provided a dynamic, sortable, paginated table. Depending on the user who was logged in \
                                                             the table would display different things. If the user was not part of the integration team, the table \
                                                             would display the status of all requests in the system so that requestors could watch their request through \
@@ -64,13 +65,16 @@ export default function Employment() {
                                                     frameworks for learning purposes, as this was the one I was interested in.\
                                                      Used axios to connect with the backend, "}
                                                      <a href="https://github.com/zenoamaro/react-quill"
-                                                                target="_blank">React Quill</a>
+                                                                target="_blank"
+                                                                rel="noreferrer">React Quill</a>
                                                     {" for the rich text editor, "}
                                                     <a href="https://react-bootstrap.github.io/"
-                                                                target="_blank">React Bootstrap</a>
+                                                                target="_blank"
+                                                                rel="noreferrer">React Bootstrap</a>
                                                     {" for styling, and "}
                                                     <a href="https://react-table.tanstack.com/"
-                                                                target="_blank">React Table</a>
+                                                                target="_blank"
+                                                                rel="noreferrer">React Table</a>
                                                     {" to create a reactive table"}
                                                     
                                                 </>
@@ -79,10 +83,10 @@ export default function Employment() {
                                                 title: "Django",
                                                 body:   <>
                                                 {"Made use of the built in User model, along "}
-                                                                <a href="https://django-auth-adfs.readthedocs.io/en/latest/" target="_blank">Microsoft ADFS middleware</a>
+                                                                <a href="https://django-auth-adfs.readthedocs.io/en/latest/" target="_blank" rel="noreferrer">Microsoft ADFS middleware</a>
                                                                 {" along with Django's built in authentication flow to handle users on the site. \
                                                         I also made use of "}
-                                                                <a href="https://www.django-rest-framework.org" target="_blank">Django Rest Framework</a>
+                                                                <a href="https://www.django-rest-framework.org" target="_blank" rel="noreferrer">Django Rest Framework</a>
                                                                 {" to quickly build a REST api"}
                                                 </>
                                             },

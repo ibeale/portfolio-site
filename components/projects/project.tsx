@@ -22,12 +22,12 @@ export default function Project({ name, description, filePaths, link, githubLink
 
     let githubLinkElement: JSX.Element|null = null;
     if(githubLink){
-        githubLinkElement = <a href={githubLink} target="_blank" className="social-icon"><FontAwesomeIcon icon={["fab", "github"]} /></a>
+        githubLinkElement = <a href={githubLink} target="_blank" rel="noreferrer" className="social-icon"><FontAwesomeIcon icon={["fab", "github"]} /></a>
     }
 
     let websiteLinkElement: JSX.Element|null = null
     if(link){
-        websiteLinkElement = <a href={link} target="_blank" className="social-icon"><FontAwesomeIcon icon={faExternalLinkAlt} /></a>
+        websiteLinkElement = <a href={link} target="_blank" rel="noreferrer" className="social-icon"><FontAwesomeIcon icon={faExternalLinkAlt} /></a>
     }
 
     let linksElement: JSX.Element =         

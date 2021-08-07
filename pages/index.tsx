@@ -55,7 +55,7 @@ export default function HomePage() {
               <Nav.Link onClick={() => scrollToSection(skillsRef)}>Skills</Nav.Link>
               <NavDropdown title="Projects" id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={() => scrollToSection(hoopFinderRef)}>Hoop Finder</NavDropdown.Item>
-                <NavDropdown.Item onClick={() => scrollToSection(solverRef)}>Djikstra's Algorithm Visualizer</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => scrollToSection(solverRef)}>Djikstra Algorithm Visualizer</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => scrollToSection(keypersRef)}>Keypers</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={() => scrollToSection(projectsRef)}>Projects Section</NavDropdown.Item>

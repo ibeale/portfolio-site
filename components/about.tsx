@@ -24,9 +24,9 @@ export default function About() {
           />
         </div>
         <div className="social-icons d-flex justify-content-center mt-5">
-            <a className="social-icon" href="https://www.linkedin.com/in/isaac-beale-04bb80191/" target="_blank"><FontAwesomeIcon icon={["fab","linkedin"]} /></a>
-            <a className="social-icon" href="https://www.github.com/ibeale" target="_blank"><FontAwesomeIcon icon={["fab","github"]} /></a>
-            <a className="social-icon" href="mailto:isaacdbeale@gmail.com" target="_blank"><FontAwesomeIcon icon={faEnvelope} /></a>
+            <a className="social-icon" href="https://www.linkedin.com/in/isaac-beale-04bb80191/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={["fab","linkedin"]} /></a>
+            <a className="social-icon" href="https://www.github.com/ibeale" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={["fab","github"]} /></a>
+            <a className="social-icon" href="mailto:isaacdbeale@gmail.com"><FontAwesomeIcon icon={faEnvelope} /></a>
         </div>
         
           
