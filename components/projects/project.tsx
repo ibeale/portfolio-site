@@ -15,9 +15,10 @@ interface ProjectProps {
     githubLink?: string;
     link?: string;
     refProp?: RefObject<HTMLDivElement>;
+    flip?: boolean;
 }
 
-export default function Project({ name, description, filePaths, link, githubLink, techStack, refProp }: ProjectProps) {
+export default function Project({ name, description, filePaths, link, githubLink, techStack, refProp, flip }: ProjectProps) {
 
     let githubLinkElement: JSX.Element|null = null;
     if(githubLink){
@@ -35,31 +36,48 @@ export default function Project({ name, description, filePaths, link, githubLink
             {githubLinkElement}
         </div>
 
+    let infoElement = <>
+                        <div className="my-3" ref={refProp}>
+                            <h3>{name}{linksElement}</h3>
+                        </div>
+                        <div className="my-3">
+                            <p>{description}</p>
+                        </div>
+                        <div className="my-3">
+                            <b>{techStack}</b>
+                        </div>
+                    </>
+
+    let carousel = filePaths.length > 0 ?  <Carousel>
+                        {filePaths.map((filePath) => (
+                            <Carousel.Item key={filePath}>
+                                <ProjectImage src={filePath} />
+                            </Carousel.Item>
+                        ))}
+                    </Carousel> : null
 
 
-    return (
+    if(flip){
+        return (
+            <Row className="my-5">
+                <Col>
+                    {carousel}
+                </Col>
+                <Col>
+                    {infoElement}
+                </Col>
+            </Row >
+        )
+    }
+    return(
         <Row className="my-5">
-            <Col>
-                <div className="my-3" ref={refProp}>
-                    <h3>{name}{linksElement}</h3>
-                </div>
-                <div className="my-3">
-                    <p>{description}</p>
-                </div>
-                <div className="my-3">
-                    <b>{techStack}</b>
-                </div>
-            </Col>
-            <Col>
-                <Carousel>
-                    {filePaths.map((filePath) => (
-                        <Carousel.Item key={filePath}>
-                            <ProjectImage src={filePath} />
-                        </Carousel.Item>
-                    ))}
-                </Carousel>
-            </Col>
-        </Row >
+                <Col>
+                    {infoElement}
+                </Col>
+                <Col>
+                    {carousel} 
+                </Col>
+            </Row >
     )
 }
 
@@ -103,6 +121,31 @@ export const SolverProps: ProjectProps = {
         "/images/solver/solver4.png",
         "/images/solver/solver5.png",
     ],
-    techStack: "React",
+    techStack: "React, Typescript",
     githubLink: "https://github.com/ibeale/graph-algo-visualizer"
+};
+
+export const KeypersProps: ProjectProps = {
+    name: "Keypers Sneaker Bot Rental Site",
+    description: "Keypers was a website for users to rent sneaker bots in order to secure limited pairs \
+    of shoes. The bots that we provided primarily used key based authentication to to pair users with bots. \
+    In order to transfer a bot to another computer, a user would go to a bot's website, sign in, and reset their\
+     key, then reactivate it on another computer. Giving a rental customer the credentials to log into the site \
+     would also allow them to steal the key. So Keypers enabled rental customers to reset the key to a bot, \
+     without providing them with the credentials associated with the bot. This was accomplished through an API \
+     which would generate temporary API Keys, to allow allow the user to make a request to the server which would \
+     create a selenium headless instance, log into the bot's site with cookies stored in the database, and\
+     click the reset button on their behalf. "
+    ,
+    filePaths: [
+        "/images/keypers/kp0.png",
+        "/images/keypers/kp1.png",
+        "/images/keypers/kp2.png",
+        "/images/keypers/kp3.png",
+        "/images/keypers/kp4.png",
+        "/images/keypers/kp5.png",
+        "/images/keypers/kp6.png",
+    ],
+    techStack: "Flask, SQLite, Sass, Bulma, Amazon EC2, Amazon Route 53",
+    githubLink: "https://github.com/ibeale/KeypersDashboard"
 };

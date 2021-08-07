@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Form, ProgressBar } from "react-bootstrap";
+import { Row, Col, ProgressBar } from "react-bootstrap";
 
 interface SkillLevel{
     name: string;
@@ -24,11 +24,14 @@ export default function Skills() {
   const skills: SkillLevel[] = React.useMemo(() => {
     return [
       {name: "Python", value: 80},
-      {name: "TypeScript", value: 75},
-      {name: "React", value: 75},
+      {name: "TypeScript", value: 70},
+      {name: "React", value: 70},
       {name: "Django", value: 70},
+      {name: "Flask", value: 60},
+      {name: "Database Design", value: 50},
       {name: "Java", value: 50},
       {name: "C#", value: 50},
+      {name: "AWS", value: 40},
     ];
   }, []);
 

@@ -1,12 +1,14 @@
 import React from "react";
 import { Col, Container, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 import About from "../components/about";
-import Project, { SolverProps } from "../components/projects/project";
+import Project, { KeypersProps, SolverProps } from "../components/projects/project";
 import Projects from "../components/projects/projects";
 import Section from "../components/section";
 import Skills from "../components/skills"
 import { HoopFinderProps } from "../components/projects/project"
 import Experience from "../components/experience/experience";
+import Education from "../components/experience/education";
+import Employment from "../components/experience/employment";
 
 export default function HomePage() {
 
@@ -16,6 +18,7 @@ export default function HomePage() {
   const projectsRef = React.useRef<HTMLDivElement>(null);
   const solverRef = React.useRef<HTMLDivElement>(null);
   const hoopFinderRef = React.useRef<HTMLDivElement>(null);
+  const keypersRef = React.useRef<HTMLDivElement>(null);
 
   const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
     //src: https://newbedev.com/javascript-scrollintoview-smooth-scroll-and-offset
@@ -53,7 +56,7 @@ export default function HomePage() {
               <NavDropdown title="Projects" id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={() => scrollToSection(hoopFinderRef)}>Hoop Finder</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => scrollToSection(solverRef)}>Djikstra's Algorithm Visualizer</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Keypers</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => scrollToSection(keypersRef)}>Keypers</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={() => scrollToSection(projectsRef)}>Projects Section</NavDropdown.Item>
               </NavDropdown>
@@ -70,6 +73,8 @@ export default function HomePage() {
             <hr></hr>
             <Section refProp={experienceRef}>
               <Experience>
+                <Education/>
+                <Employment />
               </Experience>
             </Section>
             <hr></hr>
@@ -80,7 +85,8 @@ export default function HomePage() {
             <Section refProp={projectsRef}>
               <Projects>
                 <Project {...HoopFinderProps} refProp={hoopFinderRef}/>
-                <Project {...SolverProps} refProp={solverRef}/>
+                <Project {...SolverProps} refProp={solverRef} flip/>
+                <Project {...KeypersProps} refProp={keypersRef}/>
               </Projects>
             </Section>
           </Col>
