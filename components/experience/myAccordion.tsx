@@ -20,12 +20,11 @@ export default function MyAccordion(props: MyAccordionProps) {
                 <h2 className="accordion-header">
                     <AccordionToggle eventKey={`collapse${idx}`} className="accordion-button">{item.title}</AccordionToggle>
                 </h2>
-                <AccordionCollapse eventKey={`collapse${idx}`}
-                children={
+                <AccordionCollapse eventKey={`collapse${idx}`}>
                     <div className="accordion-body">
                         {item.body}
                     </div>
-                }></AccordionCollapse>
+                </AccordionCollapse>
                 </>
             )
         })

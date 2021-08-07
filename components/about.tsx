@@ -45,11 +45,11 @@ export default function About() {
         </h1>
         <p>My name is Isaac Beale and I graduated from Oregon State University in 2020 with a degree in
           industrial engineering with a focus on information systems and a minor in computer science. Before
-          selecting my focus in my 3rd year of my undergraduate program, I hadn't written a single line of
+          selecting my focus in my 3rd year of my undergraduate program, I had not written a single line of
           code. However, since the information systems focus required some CS classes, I decided to opt for
           a minor and learned to love to program. During my last year of my undergraduate I decided to pursue
           this passion, and decided to apply for graduate programs in computer science and software engineering.
-          I ended up at Arizona State University where I am currently pursuing a Master's degree in software
+          I ended up at Arizona State University where I am currently pursuing an MS in software
           engineering. I am currently in my 2nd year of the program and working as a software engineer intern
           at Intel.
         </p>
