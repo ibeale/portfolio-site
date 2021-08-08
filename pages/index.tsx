@@ -57,7 +57,7 @@ export default function HomePage() {
       <meta property="og:locale" content="en_US" />
       <meta name="twitter:title" content="Isaac Beale" />
       <meta name="twitter:description" content="Portfolio website for Isaac Beale." />
-      <meta name="twitter:image" content="LINK TO IMAGE" />
+      <meta name="twitter:image" content="https://isaacbeale.com/images/me.png" />
       <meta name="twitter:site" content="@ibeale" />
       <meta name="twitter:creator" content="@ibeale" />
     </Head>
