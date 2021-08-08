@@ -59,6 +59,7 @@ export default function HomePage() {
       <meta name="twitter:image" content="https://isaacbeale.com/images/ogImage.png" />
       <meta name="twitter:site" content="@ibeale" />
       <meta name="twitter:creator" content="@ibeale" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0"></meta>
     </Head>
       <Navbar bg="light" expand="lg" className="fixed-top">
         <Container>
