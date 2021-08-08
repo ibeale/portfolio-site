@@ -49,14 +49,14 @@ export default function HomePage() {
       <meta name="description" content="Portfolio website for Isaac Beale. "></meta>
       <meta property="og:title" content="Isaac Beale" />
       <meta property="og:description" content="Portfolio website for Isaac Beale." />
-      <meta property="og:image" content="https://isaacbeale.com/images/me.png" />
+      <meta property="og:image" content="https://isaacbeale.com/images/ogImage.png" />
       <meta property="og:url" content="https://isaacbeale.com/" />
       <meta property="og:site_name" content="Isaac Beale" />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
       <meta name="twitter:title" content="Isaac Beale" />
       <meta name="twitter:description" content="Portfolio website for Isaac Beale." />
-      <meta name="twitter:image" content="https://isaacbeale.com/images/me.png" />
+      <meta name="twitter:image" content="https://isaacbeale.com/images/ogImage.png" />
       <meta name="twitter:site" content="@ibeale" />
       <meta name="twitter:creator" content="@ibeale" />
     </Head>
