@@ -30,7 +30,7 @@ export default function About() {
       </Col>
       <Col md={6} className="my-5">
         <h2 >Isaac Beale
-          <FontAwesomeIcon className="mx-3" icon={faAddressCard} />
+          <FontAwesomeIcon className="mx-3 section-svg" color="#70D7FF" icon={faAddressCard} />
         </h2>
         <p>My name is Isaac Beale and I graduated from Oregon State University in 2020 with a degree in
           industrial engineering with a focus on information systems and a minor in computer science. Before

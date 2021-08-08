@@ -9,6 +9,7 @@ import { HoopFinderProps } from "../components/projects/project"
 import Experience from "../components/experience/experience";
 import Education from "../components/experience/education";
 import Employment from "../components/experience/employment";
+import Head from 'next/head'
 
 export default function HomePage() {
 
@@ -43,6 +44,23 @@ export default function HomePage() {
 
   return (
     <>
+    <Head>
+      <title>Isaac Beale</title>
+      <meta name="description" content="Portfolio website for Isaac Beale. "></meta>
+      <link rel="canonical" href="https://www.isaacbeale.com/" />
+      <meta property="og:title" content="Isaac Beale" />
+      <meta property="og:description" content="Portfolio website for Isaac Beale." />
+      <meta property="og:image" content="https://isaacbeale.com/images/me.png" />
+      <meta property="og:url" content="https://isaacbeale.com/" />
+      <meta property="og:site_name" content="Isaac Beale" />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_US" />
+      <meta name="twitter:title" content="Isaac Beale" />
+      <meta name="twitter:description" content="Portfolio website for Isaac Beale." />
+      <meta name="twitter:image" content="LINK TO IMAGE" />
+      <meta name="twitter:site" content="@ibeale" />
+      <meta name="twitter:creator" content="@ibeale" />
+    </Head>
       <Navbar bg="light" expand="lg" className="fixed-top">
         <Container>
           <Navbar.Brand onClick={scrollToTop}>Isaac Beale</Navbar.Brand>
@@ -64,7 +82,7 @@ export default function HomePage() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Container fluid>
+      <Container fluid style={{backgroundColor: "#FAFAFA"}}>
         <Row>
           <Col>
             <Section refProp={aboutRef} className="align-self-center">

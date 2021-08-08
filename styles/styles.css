@@ -17,7 +17,7 @@
     color: #fff;
     text-align: center;
     white-space: nowrap;
-    background-color: #bd5d38;
+    background-color: #ff976e;
     transition: width 0.6s ease;
   }
 
@@ -26,7 +26,7 @@
   }
 
   a:hover {
-    color: #bd5d38;
+    color: #ff976e;
   }
 
 h6,
@@ -128,7 +128,7 @@ h6,
     justify-content: center;
     height: 3.5rem;
     width: 3.5rem;
-    background-color: #495057;
+    background-color: #ff976e;
     color: #fff;
     border-radius: 100%;
     font-size: 1.5rem;
@@ -138,15 +138,9 @@ h6,
     margin-right: 0;
   }
   .social-icons .social-icon:hover {
-    background-color: #bd5d38;
+    background-color: #70D7FF
   }
 
-  .section-svg{
-      display:inline;
-      margin-left: 2vw;
-      max-height: 9vw;
-      max-width: 9vw;
-  }
 
   .portfolio-section{
       margin: 8vh auto;
@@ -157,6 +151,10 @@ h6,
     background-color: #ff976e;
     -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
     box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+
+.accordion-button:hover{
+  background-color: #70D7FF;
 }
 
 .accordion-button::after{

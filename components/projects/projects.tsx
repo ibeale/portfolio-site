@@ -16,7 +16,7 @@ export default function Projects({children}: ProjectProps){
                     </Col>
                     <Col>
                         <h2>Projects 
-                            <FontAwesomeIcon className="mx-3" icon={faCode} />
+                            <FontAwesomeIcon color="#70D7FF" className="mx-3" icon={faCode} />
                         </h2>
                     </Col>
                 </Row>
