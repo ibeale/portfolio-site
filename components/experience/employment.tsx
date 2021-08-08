@@ -4,8 +4,8 @@ import MyAccordion from "./myAccordion";
 
 export default function Employment() {
     return (
-        <Row className="my-5">
-            <Col>
+        <Row className="my-3">
+            <Col md={6}>
                 <h3>Intel Corporation</h3>
                 <h6>Full Stack Software Engineer Intern</h6>
                 <p>Duration: August 2020 to Present</p>
@@ -15,7 +15,7 @@ export default function Employment() {
                         {
                             title: "Integration Technician Request",
                             body: <>
-                            <div className="my-3">
+                            <div className="">
                             {"Designed and implemented a web application for employees at Intel \
                         to make requests to the integration team. This system was built to replace \
                         the email standard that was currently in place."}
@@ -117,7 +117,7 @@ export default function Employment() {
                     ]
                 }/>
             </Col>
-            <Col></Col>
+            <Col md={6}></Col>
         </Row>
     )
 }

@@ -5,8 +5,8 @@ import MyAccordion from "./myAccordion";
 export default function Education(){
     return(
         <>
-            <Row>
-                <Col>
+            <Row className="my-3">
+                <Col md={6}>
                     <h3>Oregon State University</h3>
                     <h6>
                         B.S Industrial Engineering, minor in Computer Science
@@ -30,10 +30,10 @@ export default function Education(){
                         ]
                     }/>
                 </Col>
-                <Col></Col>
+                <Col md={6}></Col>
             </Row>
-            <Row className="my-5">
-                <Col>
+            <Row className="my-3">
+                <Col md={6}>
                 </Col>
                 <Col>
                     <h3>Arizona State University</h3>

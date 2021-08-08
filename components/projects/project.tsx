@@ -2,10 +2,8 @@ import React, { RefObject } from "react";
 import { Row, Col, Carousel } from "react-bootstrap";
 import ProjectImage from "./projectImage";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { faGithub} from '@fortawesome/free-brands-svg-icons'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faExternalLinkAlt)
 
 interface ProjectProps {
     name: string;
@@ -22,7 +20,7 @@ export default function Project({ name, description, filePaths, link, githubLink
 
     let githubLinkElement: JSX.Element|null = null;
     if(githubLink){
-        githubLinkElement = <a href={githubLink} target="_blank" rel="noreferrer" className="social-icon"><FontAwesomeIcon icon={["fab", "github"]} /></a>
+        githubLinkElement = <a href={githubLink} target="_blank" rel="noreferrer" className="social-icon"><FontAwesomeIcon icon={faGithub} /></a>
     }
 
     let websiteLinkElement: JSX.Element|null = null
@@ -37,13 +35,13 @@ export default function Project({ name, description, filePaths, link, githubLink
         </div>
 
     let infoElement = <>
-                        <div className="my-3" ref={refProp}>
+                        <div className="" ref={refProp}>
                             <h3>{name}{linksElement}</h3>
                         </div>
-                        <div className="my-3">
+                        <div className="">
                             <p>{description}</p>
                         </div>
-                        <div className="my-3">
+                        <div className="">
                             <b>{techStack}</b>
                         </div>
                     </>
@@ -59,22 +57,23 @@ export default function Project({ name, description, filePaths, link, githubLink
 
     if(flip){
         return (
-            <Row className="my-5">
-                <Col>
-                    {carousel}
-                </Col>
-                <Col>
+            <Row className="">
+                <Col xl={6} className="order-xl-2">
                     {infoElement}
                 </Col>
+                <Col xl={6} className="order-xl-1">
+                    {carousel}
+                </Col>
+                
             </Row >
         )
     }
     return(
-        <Row className="my-5">
-                <Col>
+        <Row className="my-3">
+                <Col xl={6}>
                     {infoElement}
                 </Col>
-                <Col>
+                <Col xl={6}>
                     {carousel} 
                 </Col>
             </Row >

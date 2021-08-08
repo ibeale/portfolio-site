@@ -45,7 +45,7 @@ export default function HomePage() {
     <>
       <Navbar bg="light" expand="lg" className="fixed-top">
         <Container>
-          <Navbar.Brand href="#home">Isaac Beale</Navbar.Brand>
+          <Navbar.Brand onClick={scrollToTop}>Isaac Beale</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
