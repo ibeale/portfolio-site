@@ -47,6 +47,7 @@ export default function HomePage() {
     <Head>
       <title>Isaac Beale</title>
       <meta name="description" content="Portfolio website for Isaac Beale. "></meta>
+      <link rel="canonical" href="https://www.isaacbeale.com/" />
       <meta property="og:title" content="Isaac Beale" />
       <meta property="og:description" content="Portfolio website for Isaac Beale." />
       <meta property="og:image" content="https://isaacbeale.com/images/ogImage.png" />
