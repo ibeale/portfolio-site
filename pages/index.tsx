@@ -51,17 +51,17 @@ export default function HomePage() {
       <meta name="description" content="Portfolio website for Isaac Beale. "></meta>
       <link rel="canonical" href="https://www.isaacbeale.com/" />
       <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Isaac Beale" />
-      <meta property="og:description" content="Portfolio website for Isaac Beale." />
+      <meta property="og:description" content="Software engineer portfolio website for Isaac Beale. Isaac Beale has B.S. in
+      Industrial Engineering with a minor in Computer Science. He is currently in pursuit of an M.S. in Software Engineering at
+      Arizona State University. This website provides background information about Isaac including his previous education, employment,
+      and software projects he has written on the side." />
       <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://isaacbeale.com/images/ogImage.png" />
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://isaacbeale.com/" />
       <meta property="og:site_name" content="Isaac Beale" />
       <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
       <meta name="twitter:title" content="Isaac Beale" />
-      <meta name="twitter:description" content="Software engineer portfolio website for Isaac Beale. Isaac Beale has B.S. in
-      Industrial Engineering with a minor in Computer Science. He is currently in pursuit of an M.S. in Software Engineering at
-      Arizona State University. This website provides background information about Isaac including his previous education, employment,
-      and software projects he has written on the side." />
+      <meta name="twitter:description" content="Software engineer portfolio website for Isaac Beale." />
       <meta name="twitter:image" content="https://isaacbeale.com/images/ogImage.png" />
       <meta name="twitter:site" content="@ibeale" />
       <meta name="twitter:creator" content="@ibeale" />
