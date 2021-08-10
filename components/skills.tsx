@@ -14,7 +14,7 @@ function Skill({ name, value }: { name: string, value: number }) {
         {name}
       </Col>
       <Col>
-        <ProgressBar now={value} />
+      <ProgressBar now={value} />
       </Col>
     </Row>
   );
@@ -41,7 +41,7 @@ export default function Skills() {
 
       <Col>
         <Row className="my-3">
-          <Col md={6}>
+          <Col>
             <h2>Skills
               <svg className="mx-3" xmlns="http://www.w3.org/2000/svg" width="75" height="75" version="1.1" x="0px" y="0px" viewBox="0 0 20 25" enableBackground="new 0 0 20 20">
                 <g>
@@ -52,12 +52,12 @@ export default function Skills() {
               </svg>
             </h2>
           </Col>
-          <Col md={6}>
+          <Col>
           </Col>
         </Row>
         <Row>
           <Col md={6}></Col>
-          <Col md={6}>{skills.map(s => <Skill key={s.name} name={s.name} value={s.value} />)}</Col>
+          <Col md={6}>{skills.map(s => <Skill key={s.name} name={s.name} value={s.value}/>)}</Col>
         </Row>
 
 

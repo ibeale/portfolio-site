@@ -12,9 +12,9 @@ export default function Experience({children}: ExperienceProps){
         <>
         <Col>
             <Row>
-                <Col md={6}>
+                <Col>
                 </Col>
-                <Col md={6}>
+                <Col>
                     <h2>Experience 
                         <FontAwesomeIcon className="mx-3" color="#70D7FF" icon={faBriefcase} />
                     </h2>
