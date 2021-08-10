@@ -55,7 +55,7 @@ export default function HomePage() {
       Industrial Engineering with a minor in Computer Science. He is currently in pursuit of an M.S. in Software Engineering at
       Arizona State University. This website provides background information about Isaac including his previous education, employment,
       and software projects he has written on the side." />
-      <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://isaacbeale.com/images/ogImage.png" />
+      <meta name="image" property="og:image" content="https://isaacbeale.com/images/ogImage.png" />
       <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://isaacbeale.com/" />
       <meta property="og:site_name" content="Isaac Beale" />
       <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
