@@ -175,19 +175,19 @@ h6,
   transition: all 0.5s ease
 }
 
-svg:hover #altCardTop{
+h2:hover svg #altCardTop{
   transform: translateX(40%);
   opacity: 0;
   transition-delay: 0.2s;
 }
 
-svg:hover #altCardBot{
+h2:hover svg #altCardBot{
   transform: translateX(-40%);
   opacity: 0;
   transition-delay: 0.2s;
 }
 
-svg:hover #mainCard{
+h2:hover svg #mainCard{
   animation: upanddown 1s forwards;
 }
 

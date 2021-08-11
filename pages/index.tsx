@@ -48,7 +48,7 @@ export default function HomePage() {
   return (
     <>
     <Head>
-      <title>Isaac Beale's Portfolio</title>
+      <title>Isaac Beale&apos;s Portfolio</title>
       <meta name="description" content="Software engineer portfolio website for Isaac Beale. Isaac Beale has B.S. in
       Industrial Engineering with a minor in Computer Science. He is currently in pursuit of an M.S. in Software Engineering at
       Arizona State University. This website provides background information about Isaac including his previous education, employment,
