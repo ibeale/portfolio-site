@@ -8,11 +8,16 @@ export interface SectionProps {
 }
 
 export default function Section(props: SectionProps) {
-    const className = props.className ? props.className : "";
+    
+    let className = props.className ? props.className : "";
     return(
-        <div className={"row portfolio-section " + className} ref={props.refProp}>
-            {props.children}
+        <>
+        <div className={"row portfolio-section animate" + className} ref={props.refProp}>
+                {props.children}
+            <hr className="mt-5"/>
+
         </div>
+        </>
 
     
     )

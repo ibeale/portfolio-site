@@ -23,6 +23,7 @@ export default function HomePage() {
   const hoopFinderRef = React.useRef<HTMLDivElement>(null);
   const keypersRef = React.useRef<HTMLDivElement>(null);
 
+
   const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
     //src: https://newbedev.com/javascript-scrollintoview-smooth-scroll-and-offset
     if (sectionRef.current) {
@@ -97,18 +98,15 @@ export default function HomePage() {
             <Section refProp={aboutRef} className="align-self-center">
               <About />
             </Section>
-            <hr></hr>
             <Section refProp={experienceRef}>
               <Experience>
                 <Education/>
                 <Employment />
               </Experience>
             </Section>
-            <hr></hr>
             <Section refProp={skillsRef}>
               <Skills />
             </Section>
-            <hr></hr>
             <Section refProp={projectsRef}>
               <Projects>
                 <Project {...HoopFinderProps} refProp={hoopFinderRef}/>

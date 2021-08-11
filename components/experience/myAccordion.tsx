@@ -16,7 +16,7 @@ export default function MyAccordion(props: MyAccordionProps) {
     if(Array.isArray(props.items)){
         body = props.items.map((item, idx) => {
             return (
-                <>
+                <div key={item.title}>
                 <h2 className="accordion-header">
                     <AccordionToggle eventKey={`collapse${idx}`} className="accordion-button">{item.title}</AccordionToggle>
                 </h2>
@@ -25,7 +25,7 @@ export default function MyAccordion(props: MyAccordionProps) {
                         {item.body}
                     </div>
                 </AccordionCollapse>
-                </>
+                </div>
             )
         })
     } else {

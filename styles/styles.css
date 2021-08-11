@@ -1,19 +1,25 @@
 
+  :root{
+    --color-primary: #ff976e;
+    --color-secondary: #70D7FF;
+    --color-tertiary: #495057;
+  }
 
   .progress {
     background-color: #e9ecef;
   }
   
   .progress-bar {
-    background-color: #ff976e;
+    background-color: var(--color-primary);
   }
 
   a {
     color: #343a40;
+    transition: 0.25s;
   }
 
   a:hover {
-    color: #ff976e;
+    color: var(--color-primary);
   }
 
 h6,
@@ -115,7 +121,7 @@ h6,
     justify-content: center;
     height: 3.5rem;
     width: 3.5rem;
-    background-color: #ff976e;
+    background-color: var(--color-primary);
     color: #fff;
     border-radius: 100%;
     font-size: 1.5rem;
@@ -125,26 +131,75 @@ h6,
     margin-right: 0;
   }
   .social-icons .social-icon:hover {
-    background-color: #70D7FF
+    background-color: var(--color-secondary);
+  }
+
+  .progress-bar {
+    transition: 1s;
   }
 
 
   .portfolio-section{
-      margin: 8vh auto;
+    animation: fadeIn 1s;
+    margin: 8vh auto;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+
+    }
   }
 
   .accordion-button:not(.collapsed) {
-    color: #495057;
-    background-color: #ff976e;
-    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+    color: var(--color-tertiary);
+    background-color: var(--color-primary);
 }
 
 .accordion-button:hover{
-  background-color: #70D7FF;
+  background-color: var(--color-secondary);
 }
 
 .accordion-button::after{
-    width:0;
+  width: 0;
+}
+
+#altCardTop,
+#altCardBot,
+#mainCard {
+  transition: all 0.5s ease
+}
+
+svg:hover #altCardTop{
+  transform: translateX(40%);
+  opacity: 0;
+  transition-delay: 0.2s;
+}
+
+svg:hover #altCardBot{
+  transform: translateX(-40%);
+  opacity: 0;
+  transition-delay: 0.2s;
+}
+
+svg:hover #mainCard{
+  animation: upanddown 1s forwards;
+}
+
+@keyframes upanddown {
+  0%{
+    transform: translateY(0)
+  }
+  50%{
+    transform: translateY(-20%);
+  }
+  100%{
+    transform: translateY(0);
+  }
 }
 
