@@ -23,7 +23,7 @@ export default function Experience({ children }: ExperienceProps) {
 
                                             <rect id="envelope" x="20" y="42" width="79" height="35" rx="1" fill="#FF976E" />
 
-                                            <path id="seal" d="M21 52L60.5161 71.5386C61.101 71.8278 61.7902 71.8135 62.3626 71.5003L98 52" stroke="#495057" stroke-linecap="round" />
+                                            <path id="seal" d="M21 52L60.5161 71.5386C61.101 71.8278 61.7902 71.8135 62.3626 71.5003L98 52" stroke="#495057" strokeLinecap="round" />
 
                                         </g>
                                     </a>
