@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
+import { Button, Col, Container, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 import About from "../components/about";
 import Project, { KeypersProps, SolverProps } from "../components/projects/project";
 import Projects from "../components/projects/projects";
@@ -81,6 +81,7 @@ export default function HomePage() {
               <Nav.Link onClick={scrollToTop}>About</Nav.Link>
               <Nav.Link onClick={() => scrollToSection(experienceRef)}>Experience</Nav.Link>
               <Nav.Link onClick={() => scrollToSection(skillsRef)}>Skills</Nav.Link>
+              <Nav.Link href="/IsaacBeale_Resume.pdf">Resume</Nav.Link>
               <NavDropdown title="Projects" id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={() => scrollToSection(hoopFinderRef)}>Hoop Finder</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => scrollToSection(solverRef)}>Djikstra Algorithm Visualizer</NavDropdown.Item>

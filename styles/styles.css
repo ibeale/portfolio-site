@@ -172,7 +172,21 @@ h6,
 #altCardTop,
 #altCardBot,
 #mainCard {
-  transition: all 0.5s ease
+  transition: all 0.5s ease;
+  transform: translateX(0%);
+}
+
+#experience-top,
+#experience-bottom,
+#experience-contents{
+  transition: all 0.5s ease;
+  transform: translateY(0%);
+}
+
+#experience-arrow{
+  transition: all 0.5s ease;
+  transform: translateY(-20%);
+  opacity:0;
 }
 
 h2:hover svg #altCardTop{
@@ -189,6 +203,28 @@ h2:hover svg #altCardBot{
 
 h2:hover svg #mainCard{
   animation: upanddown 1s forwards;
+}
+
+h2:hover svg #experience-arrow{
+  transform: translateY(0%);
+  opacity: 100;
+  transition-delay: 0.5s;
+}
+
+h2:hover svg #experience-top{
+  transform: translateY(-20%);
+  opacity: 0;
+
+}
+
+h2:hover svg #experience-bottom{
+  transform: translateY(10%);
+  opacity: 0;
+}
+
+h2:hover svg #experience-contents{
+  animation: upanddown 0.75s forwards;
+
 }
 
 @keyframes upanddown {

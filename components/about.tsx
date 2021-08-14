@@ -1,5 +1,4 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
 import Image from "next/image"
 import gradPhoto from "../public/images/me.png"
 import Col from "react-bootstrap/Col";
