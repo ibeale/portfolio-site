@@ -114,10 +114,11 @@ export default function HomePage() {
             </Section>
             <Section refProp={projectsRef}>
               <Projects>
-                <Project {...OSUCapstoneProps} refProp={osuCapstoneRef}/>
-                <Project {...HoopFinderProps} refProp={hoopFinderRef} flip/>
-                <Project {...SolverProps} refProp={solverRef}/>
-                <Project {...KeypersProps} refProp={keypersRef} flip/>
+                <Project {...HoopFinderProps} refProp={hoopFinderRef}/>
+                <Project {...SolverProps} refProp={solverRef} flip/>
+                <Project {...KeypersProps} refProp={keypersRef} />
+                <Project {...OSUCapstoneProps} refProp={osuCapstoneRef} flip/>
+
               </Projects>
             </Section>
           </Col>
