@@ -54,6 +54,9 @@ export default function Education(){
                                             <li>Information Assurance and Security</li>
                                             <li>Languages and Programming Paradigms (Prolog)</li>
                                             <li>Software Agility (Java, Agile)</li>
+                                            <li>Web-Based Applications (Javascript)</li>
+                                            <li>Software Security</li>
+                                            <li>Applied Cryptography</li>
                                         </ul>
                             }
                         ]
