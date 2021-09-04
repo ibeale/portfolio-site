@@ -57,7 +57,7 @@ export default function Project({ name, description, filePaths, link, githubLink
 
     if(flip){
         return (
-            <Row className="">
+            <Row className="my-5">
                 <Col xl={6} className="order-xl-2">
                     {infoElement}
                 </Col>
@@ -69,7 +69,7 @@ export default function Project({ name, description, filePaths, link, githubLink
         )
     }
     return(
-        <Row className="my-3">
+        <Row className="my-5">
                 <Col xl={6}>
                     {infoElement}
                 </Col>
