@@ -68,7 +68,7 @@ export default function About() {
           a minor and learned to love to program. During my last year of my undergraduate I decided to pursue
           this passion, and decided to apply for graduate programs in computer science and software engineering.
           I ended up at Arizona State University where I am currently pursuing an MS in software
-          engineering. I am currently in my 2nd year of the program and working as a software engineer intern
+          engineering with a focus in Cybersecurity. I am currently in my 2nd year of the program and working as a software engineer intern
           at Intel.
         </p>
       </Col>
