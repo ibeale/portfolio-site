@@ -12,6 +12,7 @@ import Employment from "../components/experience/employment";
 import Head from 'next/head'
 import Image from 'next/image'
 import favIco from "../public/android-chrome-192x192.png"
+import ogImage from "../public/images/ogImage.png"
 
 export default function HomePage() {
 
@@ -59,14 +60,16 @@ export default function HomePage() {
       Industrial Engineering with a minor in Computer Science. He is currently in pursuit of an M.S. in Software Engineering at
       Arizona State University. This website provides background information about Isaac including his previous education, employment,
       and software projects he has written on the side." />
-      <meta name="image" property="og:image" content="https://isaacbeale.com/images/ogImage.png" />
+      <meta name="image" property="og:image" content={ogImage.src} />
+      <meta property="og:image:width" content="1200"/>
+      <meta property="og:image:height" content="630"/>
       <meta property="og:url" content="https://isaacbeale.com/" />
       <meta property="og:site_name" content="Isaac Beale" />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
       <meta name="twitter:title" content="Isaac Beale" />
       <meta name="twitter:description" content="Software engineer portfolio website for Isaac Beale." />
-      <meta name="twitter:image" content="https://isaacbeale.com/images/ogImage.png" />
+      <meta name="twitter:image" content={ogImage.src}/>
       <meta name="twitter:site" content="@ibeale" />
       <meta name="twitter:creator" content="@ibeale" />
       <meta name="viewport" content="width=device-width,initial-scale=1.0"></meta>
