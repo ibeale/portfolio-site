@@ -80,6 +80,37 @@ export default function Project({ name, description, filePaths, link, githubLink
     )
 }
 
+export const OSUCapstoneProps: ProjectProps = {
+    name: "OSU Capstone",
+    description: "This project set out to empirically test the effect of hose diameter, hose length, valve, fitting,\
+    and cylinder size on the dwell time of a hydraulic cylinder for the company TEKFAB in Albany, OR. \
+    This project was the result of all that I had learned in my undergraduate degree. Luckily \
+    I was assigned a capstone where I was able to combine my education from my industrial engineering major \
+    with my computer science minor. In order to complete this, my partner and I created a randomized factorial experiment \
+    to test the effects of each of the variables along with any second and third order interaction effects. We tested \
+    six different variables using a 2^(6-1) factorial design. After creating the experiment, my partner Caylan created a \
+    steel mount for an optical laser sensor to attach to a hydraulic cylinder, where the beam would be blocked\
+     when the cylinder was fully extended. The sensor was connected to an oscilloscope,\
+    which allowed for very accurate and granular readings. After we collected data, the factorial analysis\
+    was completed in python and plots were output using matplotlib.",
+    filePaths: [
+        "/images/osuCapstone/Slide1.png",
+        "/images/osuCapstone/Slide2.png",
+        "/images/osuCapstone/Slide3.png",
+        "/images/osuCapstone/Slide4.png",
+        "/images/osuCapstone/Slide5.png",
+        "/images/osuCapstone/Slide6.png",
+        "/images/osuCapstone/Slide7.png",
+        "/images/osuCapstone/Slide8.png",
+        "/images/osuCapstone/Slide9.png",
+        "/images/osuCapstone/Slide10.png",
+    ],
+    techStack: "Python, matplotlib",
+    githubLink: "https://github.com/ibeale/capstone",
+    link: "https://tekfab.com/"
+
+}
+
 export const HoopFinderProps: ProjectProps = {
     name: "Hoop Finder",
     description: "HoopFinder is an interactive crowd sourced database of basketball hoops around the world. \

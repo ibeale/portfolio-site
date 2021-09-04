@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Col, Container, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 import About from "../components/about";
-import Project, { KeypersProps, SolverProps } from "../components/projects/project";
+import Project, { KeypersProps, OSUCapstoneProps, SolverProps } from "../components/projects/project";
 import Projects from "../components/projects/projects";
 import Section from "../components/section";
 import Skills from "../components/skills"
@@ -23,6 +23,7 @@ export default function HomePage() {
   const solverRef = React.useRef<HTMLDivElement>(null);
   const hoopFinderRef = React.useRef<HTMLDivElement>(null);
   const keypersRef = React.useRef<HTMLDivElement>(null);
+  const osuCapstoneRef = React.useRef<HTMLDivElement>(null);
 
 
   const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
@@ -113,9 +114,10 @@ export default function HomePage() {
             </Section>
             <Section refProp={projectsRef}>
               <Projects>
-                <Project {...HoopFinderProps} refProp={hoopFinderRef}/>
-                <Project {...SolverProps} refProp={solverRef} flip/>
-                <Project {...KeypersProps} refProp={keypersRef}/>
+                <Project {...OSUCapstoneProps} refProp={osuCapstoneRef}/>
+                <Project {...HoopFinderProps} refProp={hoopFinderRef} flip/>
+                <Project {...SolverProps} refProp={solverRef}/>
+                <Project {...KeypersProps} refProp={keypersRef} flip/>
               </Projects>
             </Section>
           </Col>
