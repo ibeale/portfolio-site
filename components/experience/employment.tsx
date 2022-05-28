@@ -7,8 +7,8 @@ export default function Employment() {
         <Row className="my-3">
             <Col md={6}>
                 <h3>Intel Corporation</h3>
-                <h6>Full Stack Software Engineer Intern</h6>
-                <p>Duration: August 2020 to Present</p>
+                <h6>Full Stack Software Engineer</h6>
+                <p>Intern: August 2020 to May 2022, Full Time: May 2022 to Present</p>
                 <h6>Responsibilites</h6>
                 <MyAccordion items={
                     [
@@ -18,7 +18,8 @@ export default function Employment() {
                             <div className="">
                             {"Designed and implemented a web application for employees at Intel \
                         to make requests to the integration team. This system was built to replace \
-                        the email standard that was currently in place."}
+                        the email standard that was currently in place. Will support 8 different intel locations including 4 outside \
+                                of the US"}
                             </div>
                         
                         <MyAccordion items={

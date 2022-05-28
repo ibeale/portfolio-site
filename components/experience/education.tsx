@@ -41,7 +41,7 @@ export default function Education(){
                         M.S Software Engineering
                     </h6>
                     <p>
-                        Expected graduation: May 2022
+                        Graduation: May 2022
                     </p>
                     <MyAccordion items={
                         [
@@ -57,6 +57,7 @@ export default function Education(){
                                             <li>Web-Based Applications (Javascript)</li>
                                             <li>Software Security</li>
                                             <li>Applied Cryptography</li>
+                                            <li>Extracurricular attack and defense CTFs</li>
                                         </ul>
                             }
                         ]

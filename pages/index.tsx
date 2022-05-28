@@ -29,7 +29,7 @@ export default function HomePage() {
   const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
     //src: https://newbedev.com/javascript-scrollintoview-smooth-scroll-and-offset
     if (sectionRef.current) {
-      const offset = 60;
+      const offset = 120;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = sectionRef.current.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -51,13 +51,15 @@ export default function HomePage() {
     <>
     <Head>
       <title>Isaac Beale&apos;s Portfolio</title>
-      <meta name="description" content="Software engineer portfolio website for Isaac Beale. Isaac Beale has B.S. in
+      <meta name="description" content="Software engineer portfolio website for Isaac Beale. Isaac Beale has an M.S in Software Engineering with a 
+      focus in cybersecurity along with a B.S. in
       Industrial Engineering with a minor in Computer Science. He is currently in pursuit of an M.S. in Software Engineering at
       Arizona State University. This website provides background information about Isaac including his previous education, employment,
       and software projects he has written on the side."></meta>
       <link rel="canonical" href="https://www.isaacbeale.com/" />
       <meta property="og:title" content="Isaac Beale's Portfolio" />
-      <meta property="og:description" content="Software engineer portfolio website for Isaac Beale. Isaac Beale has B.S. in
+      <meta property="og:description" content="Software engineer portfolio website for Isaac Beale. Isaac Beale has an M.S in Software Engineering with a 
+      focus in cybersecurity along with a B.S. in
       Industrial Engineering with a minor in Computer Science. He is currently in pursuit of an M.S. in Software Engineering at
       Arizona State University. This website provides background information about Isaac including his previous education, employment,
       and software projects he has written on the side." />
@@ -90,6 +92,7 @@ export default function HomePage() {
                 <NavDropdown.Item onClick={() => scrollToSection(hoopFinderRef)}>Hoop Finder</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => scrollToSection(solverRef)}>Djikstra Algorithm Visualizer</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => scrollToSection(keypersRef)}>Keypers</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => scrollToSection(osuCapstoneRef)}>OSU Capstone</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={() => scrollToSection(projectsRef)}>Projects Section</NavDropdown.Item>
               </NavDropdown>

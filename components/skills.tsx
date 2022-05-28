@@ -21,19 +21,18 @@ function Skill({ name, value }: { name: string, value: number }) {
 }
 
 export default function Skills() {
-  const skills: SkillLevel[] = React.useMemo(() => {
-    return [
+  const skills: SkillLevel[] = 
+    [
       { name: "Python", value: 80 },
       { name: "TypeScript", value: 70 },
       { name: "React", value: 70 },
       { name: "Django", value: 70 },
+      { name: "AWS", value: 60 },
       { name: "Flask", value: 60 },
-      { name: "Database Design", value: 50 },
+      { name: "Database Design", value: 60 },
       { name: "Java", value: 50 },
       { name: "C#", value: 50 },
-      { name: "AWS", value: 40 },
     ];
-  }, []);
 
   return (
     <>

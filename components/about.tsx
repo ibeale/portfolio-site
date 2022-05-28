@@ -61,15 +61,32 @@ export default function About() {
             </g>
           </svg>
         </h2>
-        <p>My name is Isaac Beale and I graduated from Oregon State University in 2020 with a degree in
-          industrial engineering with a focus on information systems and a minor in computer science. Before
-          selecting my focus in my 3rd year of my undergraduate program, I had not written a single line of
-          code. However, since the information systems focus required some CS classes, I decided to opt for
-          a minor and learned to love to program. During my last year of my undergraduate I decided to pursue
-          this passion, and decided to apply for graduate programs in computer science and software engineering.
-          I ended up at Arizona State University where I am currently pursuing an MS in software
-          engineering with a focus in Cybersecurity. I am currently in my 2nd year of the program and working as a software engineer intern
-          at Intel.
+        <p>My name is Isaac Beale and I hold an an M.S. in software engineering with a focus in cybersecurity from 
+          Arizona State University along with a B.S. in industrial engineering with a minor in computer science from Oregon State University. 
+          My path to becoming a software engineer was unconventional, starting in a different discipline, and finding a passion for programming 
+          late into my undergraduate studies. Now, I am a full time fullstack software engineer working at Intel primarily working with React and Django
+          primarily. For now, what "fullstack" means to me, is that I am still early in my career and I am currently trying to maintain a working knowledge of
+          many different topics under the web-development umbrella while looking for my niche so that I can become more specialized. The goal is to eventually move
+          away from the broad label of "fullstack" as my skills progress. With my current work experience, I would describe my work style to be self-starting and
+          independent, but not afraid to lean on my team or have my team lean on me when there is knowledge to be shared.
+          <hr/>
+          This next section is a bit more introspective about my current career path. I'll probably move these next sections to a blog section on 
+          this site once I build it, so employers feel free to skip this unless you're interested:
+          Something about I find intersting about my career path is that I never anticipated a career in web development.
+          I find that I've enjoyed most programming challenges that I've been faced with in my courses, like building a shell, GUIs in Java swing, or writing scripts to
+          automate an attack in an attack and defense CTF. At the end of the day I find that I just enjoy trying to create a good 
+          system to solve difficult problems. Ones that can be extended as the scope of the problem inevitably grows. However, 
+          my classwork was more geared towards concepts and applying them in (typically) contrived examples. So when I would try to practice
+          programming extracurricularly, the best and most accessible type of system to build were websites. I thought websites were great at-home practice
+          for many different programming challenges, and so most of my "real world" experience prior to my entry into the job-world as an intern, were web development
+          related. This is in contrast to building things like build automation tools, or trying to create a python data processing library. These I found were difficult
+          to build correctly without having real world requirements. Creating my own requirements typically resulted in pretty flat and uninteresting results.
+          So as I applied to jobs with the knowledge that I had, I suppose this first level of specialization in software engineering found me,
+          rather than seeking it out myself.
+          <br></br>
+
+
+
         </p>
       </Col>
 

@@ -1,7 +1,5 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBriefcase } from '@fortawesome/free-solid-svg-icons'
 
 interface ExperienceProps {
     children: JSX.Element | JSX.Element[];
