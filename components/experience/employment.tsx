@@ -18,7 +18,7 @@ export default function Employment() {
                             <div className="">
                             {"Designed and implemented a web application for employees at Intel \
                         to make requests to the integration team. This system was built to replace \
-                        the email standard that was currently in place. Will support 8 different intel locations including 4 outside \
+                        the email standard that was currently in place. Started as a prototype for Intel in Aloha, OR and now will support 8 different intel locations including 4 outside \
                                 of the US"}
                             </div>
                         
@@ -34,7 +34,9 @@ export default function Employment() {
                                                             {"This page was compromised of dropdowns \
                                                             text input components, along with a rich text editor. Dropdowns would be populated \
                                                             by what was input in the previous dropdowns to support different types of requests\
-                                                            with different requirements."}
+                                                            with different requirements. Furthermore, any additional information relating to the request required \
+                                                            diffirent input methodologies. This required text fields and dropdowns to be customizable by management \
+                                                            of the integration team."}
                                                         </>
                                             },
                                             {
@@ -45,7 +47,7 @@ export default function Employment() {
                                                                 target="_blank"
                                                                 rel="noreferrer">React Table</a>
                                                             {" which provided a dynamic, sortable, paginated table. Depending on the user who was logged in \
-                                                            the table would display different things. If the user was not part of the integration team, the table \
+                                                            the table would display different requests and approval abilities. If the user was not part of the integration team, the table \
                                                             would display the status of all requests in the system so that requestors could watch their request through \
                                                             the pipeline. If the user was part of the integration team, they could assign other members of the team \
                                                             to a request, approve or deny the requests, and change the request's status. All users had the option to view \
@@ -72,6 +74,14 @@ export default function Employment() {
                                                     <a href="https://react-bootstrap.github.io/"
                                                                 target="_blank"
                                                                 rel="noreferrer">React Bootstrap</a>
+                                                    {" for global state management, "}
+                                                    <a href="https://react-redux.js.org/"
+                                                        target="_blank"
+                                                        rel="noreferrer">React Redux</a>
+                                                    {"for api query management, "}
+                                                    <a href="https://react-query.tanstack.com/"
+                                                        target="_blank"
+                                                        rel="noreferrer">React query</a>
                                                     {" for styling, and "}
                                                     <a href="https://react-table.tanstack.com/"
                                                                 target="_blank"
