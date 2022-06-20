@@ -65,21 +65,21 @@ export default function About() {
           Arizona State University along with a B.S. in industrial engineering with a minor in computer science from Oregon State University. 
           My path to becoming a software engineer was unconventional, starting in a different discipline, and finding a passion for programming 
           late into my undergraduate studies. Now, I am a full time fullstack software engineer working at Intel primarily working with React and Django
-          primarily. For now, what "fullstack" means to me, is that I am still early in my career and I am currently trying to maintain a working knowledge of
+          primarily. For now, what &ldquo;fullstack&ldquo; means to me, is that I am still early in my career and I am currently trying to maintain a working knowledge of
           many different topics under the web-development umbrella while looking for my niche so that I can become more specialized. The goal is to eventually move
-          away from the broad label of "fullstack" as my skills progress. With my current work experience, I would describe my work style to be self-starting and
+          away from the broad label of &ldquo;fullstack&ldquo; as my skills progress. With my current work experience, I would describe my work style to be self-starting and
           independent, but not afraid to lean on my team or have my team lean on me when there is knowledge to be shared.
           <hr/>
-          This next section is a bit more introspective about my current career path. I'll probably move these next sections to a blog section on 
-          this site once I build it, so employers feel free to skip this unless you're interested:
+          This next section is a bit more introspective about my current career path. I&apos;ll probably move these next sections to a blog section on 
+          this site once I build it, so employers feel free to skip this unless you&apos;re interested:
           Something about I find intersting about my career path is that I never anticipated a career in web development.
-          I find that I've enjoyed most programming challenges that I've been faced with in my courses, like building a shell, GUIs in Java swing, or writing scripts to
+          I find that I&apos;ve enjoyed most programming challenges that I&apos;ve been faced with in my courses, like building a shell, GUIs in Java swing, or writing scripts to
           automate an attack in an attack and defense CTF. At the end of the day I find that I just enjoy trying to create a good 
           system to solve difficult problems. Ones that can be extended as the scope of the problem inevitably grows. However, 
           my classwork was more geared towards concepts and applying them in (typically) contrived examples. So when I would try to practice
           programming extracurricularly, the best and most accessible type of system to build were websites. I thought websites were great at-home practice
-          for many different programming challenges, and so most of my "real world" experience prior to my entry into the job-world as an intern, were web development
-          related. This is in contrast to building things like build automation tools, or trying to create a python data processing library. These I found were difficult
+          for many different programming challenges, and so most of my &ldquo;real world&ldquo; experience prior to my entry into the job-world as an intern, were web development
+          related. This is in contrast to building things like build automation tools, or trying to create a python data processing library. I found these to be difficult
           to build correctly without having real world requirements. Creating my own requirements typically resulted in pretty flat and uninteresting results.
           So as I applied to jobs with the knowledge that I had, I suppose this first level of specialization in software engineering found me,
           rather than seeking it out myself.
