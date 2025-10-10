@@ -26,7 +26,7 @@ export default function HomePage() {
   const osuCapstoneRef = React.useRef<HTMLDivElement>(null);
 
 
-  const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
+  const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement | null>) => {
     //src: https://newbedev.com/javascript-scrollintoview-smooth-scroll-and-offset
     if (sectionRef.current) {
       const offset = 120;
@@ -79,7 +79,7 @@ export default function HomePage() {
     </Head>
       <Navbar bg="light" expand="lg" className="fixed-top">
         <Container>
-          <Navbar.Brand onClick={scrollToTop}><Image src={favIco} width="50px" height="50px"></Image></Navbar.Brand>
+          <Navbar.Brand onClick={scrollToTop}><Image src={favIco} width={50} height={50} alt="Logo"></Image></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">

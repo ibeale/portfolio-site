@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCode} from '@fortawesome/free-solid-svg-icons'
 
 interface ProjectProps{
-    children?: JSX.Element | JSX.Element[]
+    children?: React.ReactNode;
 }
 
 export default function Projects({children}: ProjectProps){

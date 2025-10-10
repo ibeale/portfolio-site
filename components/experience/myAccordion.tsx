@@ -1,31 +1,27 @@
 import React from "react";
-import { Accordion, AccordionToggle, AccordionCollapse } from "react-bootstrap";
+import { Accordion } from "react-bootstrap";
 
 interface AccordionItemProps{
     title: string;
-    body: JSX.Element;
+    body: React.ReactNode;
 }
 
 
 interface MyAccordionProps {
-    items: AccordionItemProps[] | JSX.Element;
+    items: AccordionItemProps[] | React.ReactNode;
 }
 
 export default function MyAccordion(props: MyAccordionProps) {
-    let body: JSX.Element | JSX.Element[];
+    let body: React.ReactNode;
     if(Array.isArray(props.items)){
         body = props.items.map((item, idx) => {
             return (
-                <div key={item.title}>
-                <h2 className="accordion-header">
-                    <AccordionToggle eventKey={`collapse${idx}`} className="accordion-button">{item.title}</AccordionToggle>
-                </h2>
-                <AccordionCollapse eventKey={`collapse${idx}`}>
-                    <div className="accordion-body">
+                <Accordion.Item key={item.title} eventKey={`${idx}`}>
+                    <Accordion.Header>{item.title}</Accordion.Header>
+                    <Accordion.Body>
                         {item.body}
-                    </div>
-                </AccordionCollapse>
-                </div>
+                    </Accordion.Body>
+                </Accordion.Item>
             )
         })
     } else {
@@ -34,11 +30,7 @@ export default function MyAccordion(props: MyAccordionProps) {
 
     return (
         <Accordion>
-            <div className="accordion-item">
-                {body}
-            </div>
-
-
+            {body}
         </Accordion>
     )
 }

@@ -12,23 +12,23 @@ interface ProjectProps {
     techStack: string;
     githubLink?: string;
     link?: string;
-    refProp?: RefObject<HTMLDivElement>;
+    refProp?: RefObject<HTMLDivElement | null>;
     flip?: boolean;
 }
 
 export default function Project({ name, description, filePaths, link, githubLink, techStack, refProp, flip }: ProjectProps) {
 
-    let githubLinkElement: JSX.Element|null = null;
+    let githubLinkElement: React.ReactNode = null;
     if(githubLink){
         githubLinkElement = <a href={githubLink} target="_blank" rel="noreferrer" className="social-icon"><FontAwesomeIcon icon={faGithub} /></a>
     }
 
-    let websiteLinkElement: JSX.Element|null = null
+    let websiteLinkElement: React.ReactNode = null;
     if(link){
         websiteLinkElement = <a href={link} target="_blank" rel="noreferrer" className="social-icon"><FontAwesomeIcon icon={faExternalLinkAlt} /></a>
     }
 
-    let linksElement: JSX.Element =         
+    let linksElement: React.ReactNode =         
         <div className="social-icons">
             {websiteLinkElement}
             {githubLinkElement}

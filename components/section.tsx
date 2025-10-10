@@ -2,9 +2,9 @@ import React, { RefObject } from "react";
 import { Row } from "react-bootstrap";
 
 export interface SectionProps {
-    refProp?: RefObject<HTMLDivElement>;
+    refProp?: RefObject<HTMLDivElement | null>;
     className?: string;
-    children: JSX.Element;
+    children: React.ReactNode;
 }
 
 export default function Section(props: SectionProps) {

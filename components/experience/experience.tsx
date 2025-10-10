@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 
 interface ExperienceProps {
-    children: JSX.Element | JSX.Element[];
+    children: React.ReactNode;
 }
 
 export default function Experience({ children }: ExperienceProps) {
