@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Image from "next/image"
 import gradPhoto from "@/public/images/me.png"
-import ogImage from "@/public/images/ogImage.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'

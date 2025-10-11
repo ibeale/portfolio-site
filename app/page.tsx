@@ -14,7 +14,7 @@ import Project, { HoopFinderProps, SolverProps, KeypersProps, OSUCapstoneProps, 
 export default function HomePage() {
   const aboutRef = React.useRef<HTMLDivElement>(null);
   const experienceRef = React.useRef<HTMLDivElement>(null);
-  const skillsRef = React.useRef(null);
+  const skillsRef = React.useRef<HTMLDivElement>(null);
   const projectsRef = React.useRef<HTMLDivElement>(null);
   const solverRef = React.useRef<HTMLDivElement>(null);
   const hoopFinderRef = React.useRef<HTMLDivElement>(null);
