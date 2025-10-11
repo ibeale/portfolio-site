@@ -6,13 +6,13 @@ interface ProjectImageProps{
 
 export default function ProjectImage(props: ProjectImageProps){
     return(
-        <div className="block w-full">
+        <div className="relative w-full aspect-video">
             <Image
                 src={props.src}
-                width={1920}
-                height={1080}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 alt="Project screenshot"
-                className="w-full h-auto"
+                className="object-contain"
             />
         </div>
     )
