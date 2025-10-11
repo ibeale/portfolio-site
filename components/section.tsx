@@ -1,5 +1,4 @@
 import React, { RefObject } from "react";
-import { Row } from "react-bootstrap";
 
 export interface SectionProps {
     refProp?: RefObject<HTMLDivElement | null>;
@@ -8,17 +7,10 @@ export interface SectionProps {
 }
 
 export default function Section(props: SectionProps) {
-    
-    let className = props.className ? props.className : "";
     return(
-        <>
-        <div className={"row portfolio-section animate" + className} ref={props.refProp}>
-                {props.children}
-            <hr className="mt-5"/>
-
+        <div className={"portfolio-section animate " + (props.className || "")} ref={props.refProp}>
+            {props.children}
+            <hr className="mt-12"/>
         </div>
-        </>
-
-    
     )
 }

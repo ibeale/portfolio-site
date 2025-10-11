@@ -1,134 +1,137 @@
-import React from "react";
-import { Row, Col } from "react-bootstrap";
-import MyAccordion from "./myAccordion";
+"use client"
+
+import React, { useState } from "react";
+import { Timeline, TimelineItem } from "./timeline";
+import { Badge } from "@/components/ui/badge";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+
+interface ProjectCardProps {
+    title: string;
+    description: string;
+    defaultExpanded?: boolean;
+}
+
+function ProjectCard({ title, description, defaultExpanded = false }: ProjectCardProps) {
+    const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+
+    return (
+        <div className="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-200 hover:border-primary/30 transition-colors">
+            <div className="flex justify-between items-start cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+                <h5 className="font-bold text-gray-800 flex-1">{title}</h5>
+                <FontAwesomeIcon
+                    icon={isExpanded ? faChevronUp : faChevronDown}
+                    className="text-primary mt-1 ml-2"
+                />
+            </div>
+            {isExpanded && (
+                <div className="mt-3 text-gray-700 leading-relaxed">
+                    {description}
+                </div>
+            )}
+        </div>
+    );
+}
 
 export default function Employment() {
+    const appleTechnologies = [
+        "Django",
+        "Angular",
+        "RxJS",
+        "PostgreSQL",
+        "Elasticsearch"
+    ];
+
+    const intelTechnologies = [
+        "React",
+        "Django",
+        "PostgreSQL",
+        "CloudFoundry",
+        "React Table",
+        "React Query",
+        "Redux",
+        "Django Rest Framework",
+        "Intel DBaaS",
+        "Microsoft ADFS"
+    ];
+
     return (
-        <Row className="my-3">
-            <Col md={6}>
-                <h3>Intel Corporation</h3>
-                <h6>Full Stack Software Engineer</h6>
-                <p>Intern: August 2020 to May 2022, Full Time: May 2022 to Present</p>
-                <h6>Responsibilites</h6>
-                <MyAccordion items={
-                    [
-                        {
-                            title: "Integration Technician Request",
-                            body: <>
-                            <div className="">
-                            {"Designed and implemented a web application for employees at Intel \
-                        to make requests to the integration team. This system was built to replace \
-                        the email standard that was currently in place. Started as a prototype for Intel in Aloha, OR and now will support 8 different intel locations including 4 outside \
-                                of the US"}
-                            </div>
-                        
-                        <MyAccordion items={
-                            [
-                                {
-                                    title: "Integration Technician Request Pages",
-                                    body: <MyAccordion items={
-                                        [
-                                            {
-                                                title: "New Request",
-                                                body:   <>
-                                                            {"This page was compromised of dropdowns \
-                                                            text input components, along with a rich text editor. Dropdowns would be populated \
-                                                            by what was input in the previous dropdowns to support different types of requests\
-                                                            with different requirements. Furthermore, any additional information relating to the request required \
-                                                            diffirent input methodologies. This required text fields and dropdowns to be customizable by management \
-                                                            of the integration team."}
-                                                        </>
-                                            },
-                                            {
-                                                title: "View Requests",
-                                                body:  <>
-                                                            {"Implemented with "}
-                                                            <a href="https://react-table.tanstack.com"
-                                                                target="_blank"
-                                                                rel="noreferrer">React Table</a>
-                                                            {" which provided a dynamic, sortable, paginated table. Depending on the user who was logged in \
-                                                            the table would display different requests and approval abilities. If the user was not part of the integration team, the table \
-                                                            would display the status of all requests in the system so that requestors could watch their request through \
-                                                            the pipeline. If the user was part of the integration team, they could assign other members of the team \
-                                                            to a request, approve or deny the requests, and change the request's status. All users had the option to view \
-                                                            the request in detail inside of a modal window as well."}
-                                                        </>
-                                            },
-                                        ]
-                                    }/>
-                                },
-                                {
-                                    title: "Technologies",
-                                    body: <MyAccordion items={
-                                        [
-                                            {
-                                                title: "React",
-                                                body:   <>
-                                                    {"To create a dynamic frontend. Primarily chosen over other frontend\
-                                                    frameworks for learning purposes, as this was the one I was interested in.\
-                                                     Used axios to connect with the backend, "}
-                                                     <a href="https://github.com/zenoamaro/react-quill"
-                                                                target="_blank"
-                                                                rel="noreferrer">React Quill</a>
-                                                    {" for the rich text editor, "}
-                                                    <a href="https://react-bootstrap.github.io/"
-                                                                target="_blank"
-                                                                rel="noreferrer">React Bootstrap</a>
-                                                    {" for global state management, "}
-                                                    <a href="https://react-redux.js.org/"
-                                                        target="_blank"
-                                                        rel="noreferrer">React Redux</a>
-                                                    {"for api query management, "}
-                                                    <a href="https://react-query.tanstack.com/"
-                                                        target="_blank"
-                                                        rel="noreferrer">React query</a>
-                                                    {" for styling, and "}
-                                                    <a href="https://react-table.tanstack.com/"
-                                                                target="_blank"
-                                                                rel="noreferrer">React Table</a>
-                                                    {" to create a reactive table"}
-                                                    
-                                                </>
-                                            },
-                                            {
-                                                title: "Django",
-                                                body:   <>
-                                                {"Made use of the built in User model, along "}
-                                                                <a href="https://django-auth-adfs.readthedocs.io/en/latest/" target="_blank" rel="noreferrer">Microsoft ADFS middleware</a>
-                                                                {" along with Django's built in authentication flow to handle users on the site. \
-                                                        I also made use of "}
-                                                                <a href="https://www.django-rest-framework.org" target="_blank" rel="noreferrer">Django Rest Framework</a>
-                                                                {" to quickly build a REST api"}
-                                                </>
-                                            },
-                                            {
-                                                title: "CloudFoundry",
-                                                body:   <>
-                                                {"Intel's implementation of CloudFoundry supports many buildpacks for different languages. \
-                                                In this case, I would build the react frontend, and move it into the Django app to be served. "}
-                                                </>
-                                            },
-                                            {
-                                                title: "PostgreSQL, Intel DBaaS",
-                                                body:   <>
-                                                {"Intel also provided a Database as a Service product. There was not any reason to chose \
-                                                Postgres over the other open source databases in this application, only that I wanted to move \
-                                                away from MS SQL Server, and I did not think a NoSQL database fit this application."}
-                                                </>
-                                            },
+        <Timeline>
+            {/* Apple */}
+            <TimelineItem
+                title="Apple"
+                subtitle="Full Stack Software Engineer"
+                date="September 2022 to Present"
+                align="left"
+            >
+                <div className="mb-6">
+                    <h6 className="text-sm font-semibold text-gray-600 mb-3">Technologies Used:</h6>
+                    <div className="flex flex-wrap gap-2">
+                        {appleTechnologies.map((tech) => (
+                            <Badge key={tech} variant="primary" size="sm">{tech}</Badge>
+                        ))}
+                    </div>
+                </div>
 
-                                        ]
-                                    }/>
-                                },
+                <h6 className="text-lg font-bold text-gray-800 mb-4">Human Engineering Software</h6>
 
-                            ]
-                        } />
-                            </>
-                        },
-                    ]
-                }/>
-            </Col>
-            <Col md={6}></Col>
-        </Row>
+                <p className="text-gray-700 leading-relaxed">
+                    Working on a small, agile internal tools team focused on innovation and developer experience. Responsibilities include collaborating with stakeholders to gather requirements, designing and pitching technical solutions, and building and maintaining a diverse portfolio of tools and libraries that support internal workflows.
+                </p>
+            </TimelineItem>
+
+            {/* Intel */}
+            <TimelineItem
+                title="Intel Corporation"
+                subtitle="Full Stack Software Engineer"
+                date="Intern: August 2020 to May 2022 | Full Time: May 2022 to September 2022"
+                align="right"
+            >
+                <div className="mb-6">
+                    <h6 className="text-sm font-semibold text-gray-600 mb-3">Technologies Used:</h6>
+                    <div className="flex flex-wrap gap-2">
+                        {intelTechnologies.map((tech) => (
+                            <Badge key={tech} variant="primary" size="sm">{tech}</Badge>
+                        ))}
+                    </div>
+                </div>
+
+                <h6 className="text-lg font-bold text-gray-800 mb-4">Key Project: Integration Technician Request System</h6>
+
+                <p className="text-gray-700 leading-relaxed mb-4">
+                    Designed and implemented a web application for employees at Intel to make requests to the integration team.
+                    This system was built to replace the email standard that was currently in place. Started as a prototype for Intel
+                    in Aloha, OR and now supports 8 different intel locations including 4 outside of the US.
+                </p>
+
+                <div className="space-y-3">
+                    <ProjectCard
+                        title="New Request Form"
+                        description="Built a dynamic form with dropdowns, text inputs, and a rich text editor. Dropdowns populate based on previous selections to support different request types with varying requirements. Input fields are customizable by integration team management to adapt to changing needs."
+                        defaultExpanded={true}
+                    />
+
+                    <ProjectCard
+                        title="View Requests Dashboard"
+                        description="Implemented with React Table to provide a dynamic, sortable, paginated table. The dashboard shows different views based on user roles: requestors can track their submissions through the pipeline, while integration team members can assign tasks, approve/deny requests, and update statuses. All users can view detailed request information in modal windows."
+                    />
+
+                    <ProjectCard
+                        title="React Frontend Architecture"
+                        description="Built with React to create a dynamic user experience. Utilized axios for backend communication, React Quill for rich text editing, React Bootstrap for UI components, Redux for global state management, React Query for API data fetching, and React Table for interactive data display."
+                    />
+
+                    <ProjectCard
+                        title="Django Backend & Authentication"
+                        description="Leveraged Django's built-in User model with Microsoft ADFS middleware for seamless authentication. Implemented Django Rest Framework to build a robust REST API that powers the application."
+                    />
+
+                    <ProjectCard
+                        title="Deployment & Database"
+                        description="Deployed on Intel's CloudFoundry platform using Python buildpack. The React frontend is built and served through Django. Uses PostgreSQL via Intel's Database as a Service (DBaaS) for reliable data storage and management."
+                    />
+                </div>
+            </TimelineItem>
+        </Timeline>
     )
 }

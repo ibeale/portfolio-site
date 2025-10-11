@@ -1,9 +1,12 @@
-import React, { RefObject } from "react";
-import { Row, Col, Carousel } from "react-bootstrap";
+"use client"
+
+import React, { RefObject, useCallback } from "react";
+import useEmblaCarousel from 'embla-carousel-react';
 import ProjectImage from "./projectImage";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub} from '@fortawesome/free-brands-svg-icons'
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import { faExternalLinkAlt, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { Badge } from "@/components/ui/badge";
 
 interface ProjectProps {
     name: string;
@@ -13,71 +16,120 @@ interface ProjectProps {
     githubLink?: string;
     link?: string;
     refProp?: RefObject<HTMLDivElement | null>;
-    flip?: boolean;
 }
 
-export default function Project({ name, description, filePaths, link, githubLink, techStack, refProp, flip }: ProjectProps) {
+export default function Project({ name, description, filePaths, link, githubLink, techStack, refProp }: ProjectProps) {
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
-    let githubLinkElement: React.ReactNode = null;
-    if(githubLink){
-        githubLinkElement = <a href={githubLink} target="_blank" rel="noreferrer" className="social-icon"><FontAwesomeIcon icon={faGithub} /></a>
-    }
+    const scrollPrev = useCallback(() => {
+        if (emblaApi) emblaApi.scrollPrev()
+    }, [emblaApi]);
 
-    let websiteLinkElement: React.ReactNode = null;
-    if(link){
-        websiteLinkElement = <a href={link} target="_blank" rel="noreferrer" className="social-icon"><FontAwesomeIcon icon={faExternalLinkAlt} /></a>
-    }
+    const scrollNext = useCallback(() => {
+        if (emblaApi) emblaApi.scrollNext()
+    }, [emblaApi]);
 
-    let linksElement: React.ReactNode =         
-        <div className="social-icons">
-            {websiteLinkElement}
-            {githubLinkElement}
+    const techArray = techStack.split(',').map(tech => tech.trim());
+
+    const linksElement = (
+        <div className="flex gap-2 mt-4">
+            {link && (
+                <a
+                    href={link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/80 transition-colors"
+                >
+                    <FontAwesomeIcon icon={faExternalLinkAlt} className="text-sm" />
+                    <span>Live Demo</span>
+                </a>
+            )}
+            {githubLink && (
+                <a
+                    href={githubLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                >
+                    <FontAwesomeIcon icon={faGithub} className="text-sm" />
+                    <span>GitHub</span>
+                </a>
+            )}
         </div>
+    );
 
-    let infoElement = <>
-                        <div className="" ref={refProp}>
-                            <h3>{name}{linksElement}</h3>
+    const infoElement = (
+        <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100 h-full flex flex-col">
+            <div ref={refProp}>
+                <h3 className="text-2xl mb-3">{name}</h3>
+            </div>
+            <div className="flex-1">
+                <p className="text-gray-700 leading-relaxed mb-4">{description}</p>
+            </div>
+            <div className="mt-auto">
+                <h6 className="text-sm font-semibold text-gray-600 mb-2">Tech Stack:</h6>
+                <div className="flex flex-wrap gap-2 mb-2">
+                    {techArray.map((tech) => (
+                        <Badge key={tech} variant="default" size="sm">{tech}</Badge>
+                    ))}
+                </div>
+                {linksElement}
+            </div>
+        </div>
+    );
+
+    const carousel = filePaths.length > 0 ? (
+        <div className="relative rounded-lg overflow-hidden shadow-md border border-gray-100">
+            <div className="overflow-hidden" ref={emblaRef}>
+                <div className="flex">
+                    {filePaths.map((filePath) => (
+                        <div key={filePath} className="flex-[0_0_100%] min-w-0">
+                            <ProjectImage src={filePath} />
                         </div>
-                        <div className="">
-                            <p>{description}</p>
-                        </div>
-                        <div className="">
-                            <b>{techStack}</b>
-                        </div>
-                    </>
+                    ))}
+                </div>
+            </div>
+            {filePaths.length > 1 && (
+                <>
+                    <button
+                        onClick={scrollPrev}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-primary/90 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors shadow-lg"
+                        aria-label="Previous slide"
+                    >
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                    </button>
+                    <button
+                        onClick={scrollNext}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary/90 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors shadow-lg"
+                        aria-label="Next slide"
+                    >
+                        <FontAwesomeIcon icon={faChevronRight} />
+                    </button>
+                </>
+            )}
+        </div>
+    ) : link && link.includes('youtube.com') ? (
+        <div className="relative rounded-lg overflow-hidden shadow-md border border-gray-100 aspect-video">
+            <iframe
+                className="w-full h-full"
+                src={link.replace('watch?v=', 'embed/')}
+                title={name}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+            />
+        </div>
+    ) : null;
 
-    let carousel = filePaths.length > 0 ?  <Carousel>
-                        {filePaths.map((filePath) => (
-                            <Carousel.Item key={filePath}>
-                                <ProjectImage src={filePath} />
-                            </Carousel.Item>
-                        ))}
-                    </Carousel> : null
-
-
-    if(flip){
-        return (
-            <Row className="my-5">
-                <Col xl={6} className="order-xl-2">
-                    {infoElement}
-                </Col>
-                <Col xl={6} className="order-xl-1">
-                    {carousel}
-                </Col>
-                
-            </Row >
-        )
-    }
-    return(
-        <Row className="my-5">
-                <Col xl={6}>
-                    {infoElement}
-                </Col>
-                <Col xl={6}>
-                    {carousel} 
-                </Col>
-            </Row >
-    )
+    return (
+        <div className="flex flex-col xl:flex-row gap-8 my-12">
+            <div className="flex-1">
+                {infoElement}
+            </div>
+            <div className="flex-1">
+                {carousel}
+            </div>
+        </div>
+    );
 }
 
 export const OSUCapstoneProps: ProjectProps = {
@@ -107,9 +159,43 @@ export const OSUCapstoneProps: ProjectProps = {
     ],
     techStack: "Python, matplotlib",
     githubLink: "https://github.com/ibeale/capstone",
-    link: "https://tekfab.com/"
 
 }
+
+export const ASUMapsProps: ProjectProps = {
+    name: "ASU Maps AR Navigation",
+    description: "An augmented reality mobile application for Arizona State University that helps students navigate between classes using AR overlays. \
+    The app features user authentication with persistent class schedules, course search and management, and campus tours. \
+    Students can navigate to buildings or specific classes with real-time AR directional arrows overlaid on their camera view. \
+    The application includes QR code scanning for building information, event management, and personalized recommendations based on the user's schedule.",
+    filePaths: [],
+    techStack: "Unity, C#, AR Foundation, Firebase",
+    link: "https://www.youtube.com/watch?v=3Q_KH5BDUi8"
+};
+
+export const DigyProps: ProjectProps = {
+    name: "Digy Programming Language",
+    description: "A custom programming language based on Python syntax, built using ANTLR for grammar parsing and evaluation. \
+    Digy supports multiple data types (integer, string, boolean), arithmetic and logical operators, control flow statements (if/else, while loops, for loops), \
+    and a ternary operator. The language features static type inference, global variable scoping, and comprehensive error handling for undeclared or uninitialized variables. \
+    Implemented using the visitor pattern for AST traversal and includes a custom interpreter/evaluator built in Python.",
+    filePaths: [],
+    techStack: "Python, ANTLR, Lexical Analysis, Parser, Interpreter Design",
+    link: "https://www.youtube.com/watch?v=G6CDim1KdWk"
+};
+
+export const LifeMapsProps: ProjectProps = {
+    name: "LifeMapz E-Commerce Platform",
+    description: "A proof-of-concept e-commerce platform developed for an external stakeholder, demonstrating how vendors could sell products through individual stores with QR code integration. \
+    The project showcased the complete development lifecycle from design to deployment, utilizing Figma for collaborative UI/UX design and AWS Amplify to convert designs into React components. \
+    Core features include Stripe integration for payment processing and vendor onboarding, user authentication with email verification, product management with image uploads, \
+    QR code generation using QRTiger API, shopping cart functionality with checkout flow, and a vendor analytics dashboard. \
+    The backend leverages AWS serverless infrastructure with DynamoDB for scalable data storage, Lambda functions for business logic, API Gateway for REST endpoints, and CloudFront CDN for global content delivery. \
+    State management was handled with Redux to ensure consistent data flow across the React component architecture.",
+    filePaths: [],
+    techStack: "React, Redux, AWS Amplify, AWS Lambda, DynamoDB, API Gateway, CloudFront, Stripe, QRTiger, Figma",
+    link: "https://www.youtube.com/watch?v=Hj9O0VHf5fA"
+};
 
 export const HoopFinderProps: ProjectProps = {
     name: "Hoop Finder",

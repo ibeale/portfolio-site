@@ -1,5 +1,10 @@
 import React from "react";
-import { Accordion } from "react-bootstrap";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface AccordionItemProps{
     title: string;
@@ -16,12 +21,14 @@ export default function MyAccordion(props: MyAccordionProps) {
     if(Array.isArray(props.items)){
         body = props.items.map((item, idx) => {
             return (
-                <Accordion.Item key={item.title} eventKey={`${idx}`}>
-                    <Accordion.Header>{item.title}</Accordion.Header>
-                    <Accordion.Body>
+                <AccordionItem key={item.title} value={`item-${idx}`}>
+                    <AccordionTrigger className="bg-primary hover:bg-secondary text-tertiary">
+                        {item.title}
+                    </AccordionTrigger>
+                    <AccordionContent>
                         {item.body}
-                    </Accordion.Body>
-                </Accordion.Item>
+                    </AccordionContent>
+                </AccordionItem>
             )
         })
     } else {
@@ -29,7 +36,7 @@ export default function MyAccordion(props: MyAccordionProps) {
     }
 
     return (
-        <Accordion>
+        <Accordion type="single" collapsible>
             {body}
         </Accordion>
     )
