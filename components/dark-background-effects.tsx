@@ -20,59 +20,86 @@ export function DarkBackgroundEffects() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Characters for code rain (realistic code symbols and operators)
-    const chars = '01{}<>[]();:,./\|+-*=&%$#@!~`^?_abcdefxyz';
-    const fontSize = 14;
-    const columns = Math.floor(canvas.width / fontSize);
+    // Particle system with depth layers
+    const particles: Array<{
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      depth: number; // 0-1, where 1 is closest
+      opacity: number;
+      color: string;
+    }> = [];
 
-    // Array of drops - one per column
-    const drops: number[] = [];
-    for (let i = 0; i < columns; i++) {
-      drops[i] = Math.random() * -100; // Start at random positions above screen
-    }
-
-    // Colors for different types of "code"
+    // Create particles at different depth layers
+    const particleCount = 60;
     const colors = [
-      'rgba(78, 205, 196, 0.8)', // cyan
-      'rgba(149, 225, 211, 0.8)', // mint
-      'rgba(255, 107, 107, 0.6)', // coral
+      '176, 46%, 56%', // cyan
+      '162, 53%, 73%', // mint
+      '0, 100%, 71%', // coral
+      '24, 7%, 70%', // glow
     ];
 
-    // Animation loop
+    for (let i = 0; i < particleCount; i++) {
+      const depth = Math.random();
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        // Closer particles move faster (parallax effect)
+        vx: (Math.random() - 0.5) * depth * 0.2,
+        vy: (Math.random() - 0.5) * depth * 0.2,
+        // Closer particles are larger
+        size: 0.5 + depth * 2,
+        depth,
+        // Closer particles are more opaque
+        opacity: 0.1 + depth * 0.25,
+        color: colors[Math.floor(Math.random() * colors.length)],
+      });
+    }
+
     let animationId: number;
-    let frameCount = 0;
-
     const animate = () => {
-      // Fade effect for trailing
-      ctx.fillStyle = 'rgba(15, 20, 25, 0.08)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.font = `${fontSize}px JetBrains Mono, monospace`;
+      // Update and draw particles
+      particles.forEach((particle) => {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
 
-      // Draw characters
-      for (let i = 0; i < drops.length; i++) {
-        // Pick random character
-        const char = chars[Math.floor(Math.random() * chars.length)];
+        // Wrap around edges
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
 
-        // Pick color (mostly cyan, occasional coral/mint)
-        const colorIndex = Math.random() > 0.85 ? Math.floor(Math.random() * colors.length) : 0;
-        ctx.fillStyle = colors[colorIndex];
+        // Draw particle with subtle glow
+        const glowSize = particle.size * 3;
+        const gradient = ctx.createRadialGradient(
+          particle.x,
+          particle.y,
+          0,
+          particle.x,
+          particle.y,
+          glowSize
+        );
 
-        // Draw the character
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
-        ctx.fillText(char, x, y);
+        gradient.addColorStop(0, `hsla(${particle.color}, ${particle.opacity})`);
+        gradient.addColorStop(0.4, `hsla(${particle.color}, ${particle.opacity * 0.3})`);
+        gradient.addColorStop(1, 'hsla(0, 0%, 0%, 0)');
 
-        // Reset drop to top randomly after it has passed the screen
-        if (y > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, glowSize, 0, Math.PI * 2);
+        ctx.fill();
 
-        // Move drop down (very slow)
-        drops[i] += 0.15;
-      }
+        // Draw bright center point
+        ctx.fillStyle = `hsla(${particle.color}, ${particle.opacity * 1.5})`;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
 
-      frameCount++;
       animationId = requestAnimationFrame(animate);
     };
 

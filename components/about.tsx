@@ -150,7 +150,7 @@ function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode
         {icon}
       </div>
       {/* Tooltip */}
-      <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 font-mono text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+      <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 font-mono text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
         {label}
       </span>
     </a>

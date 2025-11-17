@@ -20,68 +20,156 @@ export function BackgroundEffects() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Voronoi points
-    const points: { x: number; y: number; vx: number; vy: number }[] = [];
-    const numPoints = 20;
-
-    // Initialize points with slow random movement
-    for (let i = 0; i < numPoints; i++) {
-      points.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-      });
+    interface Branch {
+      x: number;
+      y: number;
+      angle: number;
+      length: number;
+      maxLength: number;
+      width: number;
+      opacity: number;
+      growing: boolean;
+      children: Branch[];
+      age: number;
+      color: string;
     }
 
-    // Animation loop
-    let animationId: number;
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const branches: Branch[] = [];
+    const maxBranches = 8; // Keep sparse
+    let frameCount = 0;
 
-      // Update point positions
-      points.forEach((point) => {
-        point.x += point.vx;
-        point.y += point.vy;
+    // Earthy color palette
+    const colors = [
+      'rgba(100, 80, 60, ',      // warm brown
+      'rgba(120, 95, 70, ',      // sepia
+      'rgba(139, 115, 85, ',     // tan
+      'rgba(80, 70, 55, ',       // dark brown
+    ];
 
-        // Bounce off edges
-        if (point.x < 0 || point.x > canvas.width) point.vx *= -1;
-        if (point.y < 0 || point.y > canvas.height) point.vy *= -1;
+    // Create a new branch
+    const createBranch = (
+      x?: number,
+      y?: number,
+      angle?: number,
+      width?: number,
+      parent?: Branch
+    ): Branch => {
+      return {
+        x: x ?? Math.random() * canvas.width,
+        y: y ?? Math.random() * canvas.height,
+        angle: angle ?? Math.random() * Math.PI * 2,
+        length: 0,
+        maxLength: 60 + Math.random() * 120,
+        width: width ?? 1.5 + Math.random() * 2,
+        opacity: 0.12 + Math.random() * 0.15,
+        growing: true,
+        children: [],
+        age: 0,
+        color: colors[Math.floor(Math.random() * colors.length)],
+      };
+    };
 
-        // Keep within bounds
-        point.x = Math.max(0, Math.min(canvas.width, point.x));
-        point.y = Math.max(0, Math.min(canvas.height, point.y));
-      });
+    // Initialize with a few branches
+    for (let i = 0; i < 4; i++) {
+      branches.push(createBranch());
+    }
 
-      // Draw Voronoi-inspired cells with subtle lines
-      ctx.strokeStyle = 'rgba(212, 68, 46, 0.08)'; // vermillion with low opacity
-      ctx.lineWidth = 1;
+    const drawBranch = (branch: Branch) => {
+      if (branch.length <= 0) return;
 
-      // Draw connections between nearby points
-      for (let i = 0; i < points.length; i++) {
-        for (let j = i + 1; j < points.length; j++) {
-          const dx = points[i].x - points[j].x;
-          const dy = points[i].y - points[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+      const endX = branch.x + Math.cos(branch.angle) * branch.length;
+      const endY = branch.y + Math.sin(branch.angle) * branch.length;
 
-          if (distance < 200) {
-            const opacity = (1 - distance / 200) * 0.15;
-            ctx.strokeStyle = `rgba(42, 127, 98, ${opacity})`; // jade
-            ctx.beginPath();
-            ctx.moveTo(points[i].x, points[i].y);
-            ctx.lineTo(points[j].x, points[j].y);
-            ctx.stroke();
-          }
+      // Calculate tapering width
+      const progress = branch.length / branch.maxLength;
+      const currentWidth = branch.width * (1 - progress * 0.6);
+
+      // Draw the branch with gradient for natural taper
+      const gradient = ctx.createLinearGradient(branch.x, branch.y, endX, endY);
+      gradient.addColorStop(0, `${branch.color}${branch.opacity})`);
+      gradient.addColorStop(1, `${branch.color}${branch.opacity * 0.5})`);
+
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = Math.max(0.5, currentWidth);
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      ctx.beginPath();
+      ctx.moveTo(branch.x, branch.y);
+      ctx.lineTo(endX, endY);
+      ctx.stroke();
+
+      // Draw children branches
+      branch.children.forEach(drawBranch);
+    };
+
+    const updateBranch = (branch: Branch) => {
+      if (branch.growing && branch.length < branch.maxLength) {
+        // Grow slowly
+        branch.length += 0.4 + Math.random() * 0.3;
+        branch.age++;
+
+        // Chance to create a child branch
+        const progress = branch.length / branch.maxLength;
+        if (
+          progress > 0.3 &&
+          progress < 0.8 &&
+          branch.children.length < 2 &&
+          Math.random() < 0.015
+        ) {
+          const endX = branch.x + Math.cos(branch.angle) * branch.length;
+          const endY = branch.y + Math.sin(branch.angle) * branch.length;
+          const angleVariation = (Math.random() - 0.5) * Math.PI * 0.6;
+
+          branch.children.push(
+            createBranch(
+              endX,
+              endY,
+              branch.angle + angleVariation,
+              branch.width * 0.7,
+              branch
+            )
+          );
+        }
+      } else if (branch.growing) {
+        branch.growing = false;
+      }
+
+      // Slowly fade out old branches
+      if (!branch.growing) {
+        branch.age++;
+        if (branch.age > 800) {
+          branch.opacity -= 0.002;
         }
       }
 
-      // Draw subtle circles at points
-      points.forEach((point) => {
-        ctx.fillStyle = 'rgba(139, 115, 85, 0.1)'; // sepia
-        ctx.beginPath();
-        ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
-        ctx.fill();
+      // Update children
+      branch.children.forEach(updateBranch);
+    };
+
+    let animationId: number;
+    const animate = () => {
+      frameCount++;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Update and draw all branches
+      branches.forEach((branch) => {
+        updateBranch(branch);
+        drawBranch(branch);
       });
+
+      // Remove fully faded branches and add new ones
+      for (let i = branches.length - 1; i >= 0; i--) {
+        if (branches[i].opacity <= 0) {
+          branches.splice(i, 1);
+        }
+      }
+
+      // Occasionally add new branches
+      if (branches.length < maxBranches && Math.random() < 0.003) {
+        branches.push(createBranch());
+      }
 
       animationId = requestAnimationFrame(animate);
     };

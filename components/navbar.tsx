@@ -70,8 +70,8 @@ export default function Navbar({ aboutRef, experienceRef, skillsRef, projectsRef
             <NavButton onClick={() => scrollToSection(aboutRef)} label="about" />
             <NavButton onClick={() => scrollToSection(experienceRef)} label="experience" />
             <NavButton onClick={() => scrollToSection(skillsRef)} label="skills" />
-            <NavLink href="/IsaacBeale_Resume.pdf" label="resume" />
             <NavButton onClick={() => scrollToSection(projectsRef)} label="projects" />
+            <NavLink href="/IsaacBeale_Resume.pdf" label="resume" />
 
             {/* Theme toggle */}
             <div className="ml-2 pl-2 border-l border-border">
@@ -101,8 +101,8 @@ export default function Navbar({ aboutRef, experienceRef, skillsRef, projectsRef
             <MobileNavButton onClick={() => scrollToSection(aboutRef)} label="about" />
             <MobileNavButton onClick={() => scrollToSection(experienceRef)} label="experience" />
             <MobileNavButton onClick={() => scrollToSection(skillsRef)} label="skills" />
-            <MobileNavLink href="/IsaacBeale_Resume.pdf" label="resume" />
             <MobileNavButton onClick={() => scrollToSection(projectsRef)} label="projects" />
+            <MobileNavLink href="/IsaacBeale_Resume.pdf" label="resume" />
           </div>
         </div>
       )}
