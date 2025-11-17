@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCode} from '@fortawesome/free-solid-svg-icons'
+import { Folder } from "lucide-react";
 
 interface ProjectProps{
     children?: React.ReactNode;
@@ -8,11 +7,12 @@ interface ProjectProps{
 
 export default function Projects({children}: ProjectProps){
     return (
-        <div className="w-full">
-            <div className="grid grid-cols-2 gap-4">
-                    <h2>Projects
-                        <FontAwesomeIcon color="#70D7FF" className="mx-3" icon={faCode} />
-                    </h2>
+        <div className="w-full space-y-8">
+            <div className="flex items-center gap-4">
+                <h2 className="text-foreground">Projects</h2>
+                <div className="font-mono text-sm text-muted-foreground flex items-center gap-2">
+                    <span className="text-primary">$</span> ls -R projects/
+                </div>
             </div>
             <div className="[&>*:nth-child(odd)]:xl:flex-row-reverse">
                 {children}
@@ -20,4 +20,3 @@ export default function Projects({children}: ProjectProps){
         </div>
     )
 }
-

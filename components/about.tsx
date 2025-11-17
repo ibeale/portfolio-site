@@ -3,77 +3,90 @@
 import React, { useState } from "react";
 import Image from "next/image"
 import gradPhoto from "@/public/images/me.png"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { Github, Linkedin, Mail, ChevronDown, ChevronUp, Terminal } from 'lucide-react';
 
 export default function About() {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="grid md:grid-cols-2 gap-8 my-12">
-      <div className="flex flex-col items-center justify-center">
-        <div className="flex justify-center mb-6">
-          <div className="relative">
-            <Image
-              src={gradPhoto}
-              alt="Picture of Isaac Beale"
-              className="rounded-full shadow-xl ring-4 ring-primary/20"
-              height="300"
-              width="300"
-            />
-          </div>
+    <div className="grid lg:grid-cols-[2fr_3fr] gap-12 my-12">
+      {/* Left column: Photo and social */}
+      <div className="flex flex-col items-center lg:items-start gap-8">
+        <div className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+          <Image
+            src={gradPhoto}
+            alt="Isaac Beale"
+            className="relative rounded-2xl shadow-2xl border-2 border-border"
+            height="300"
+            width="300"
+          />
         </div>
-        <div className="social-icons flex justify-center">
-          <a className="social-icon" href="https://www.linkedin.com/in/isaac-beale-04bb80191/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
-          <a className="social-icon" href="https://www.github.com/ibeale" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
-          <a className="social-icon" href="mailto:isaacdbeale@gmail.com"><FontAwesomeIcon icon={faEnvelope} /></a>
+
+        {/* Social links with terminal aesthetic */}
+        <div className="flex gap-4">
+          <SocialLink
+            href="https://www.linkedin.com/in/isaac-beale-04bb80191/"
+            icon={<Linkedin className="w-5 h-5" />}
+            label="linkedin"
+          />
+          <SocialLink
+            href="https://www.github.com/ibeale"
+            icon={<Github className="w-5 h-5" />}
+            label="github"
+          />
+          <SocialLink
+            href="mailto:isaacdbeale@gmail.com"
+            icon={<Mail className="w-5 h-5" />}
+            label="email"
+          />
+        </div>
+
+        {/* Terminal command prompt */}
+        <div className="hidden lg:block w-full">
+          <div className="card-terminal">
+            <div className="flex items-center gap-2 mb-3 text-muted-foreground">
+              <Terminal className="w-4 h-4" />
+              <span className="font-mono text-xs">~/about</span>
+            </div>
+            <div className="font-mono text-sm space-y-1">
+              <div className="flex items-start gap-2">
+                <span className="text-primary">$</span>
+                <span className="text-muted-foreground">whoami</span>
+              </div>
+              <div className="text-foreground pl-4">Full-stack engineer @ Apple</div>
+              <div className="flex items-start gap-2 mt-3">
+                <span className="text-primary">$</span>
+                <span className="text-muted-foreground">cat education.txt</span>
+              </div>
+              <div className="text-foreground pl-4 text-xs leading-relaxed">
+                M.S. Software Engineering (ASU)<br/>
+                B.S. Industrial Engineering (OSU)
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="flex flex-col justify-center">
-        <h2 className="mb-6">Isaac Beale
-          <svg className="inline-block mb-3 mx-3" width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="aboutCards">
-              <g id="altCardBot">
-                <rect id="Rectangle 1" x="1" y="25" width="85" height="51" rx="5" fill="#FF976E" />
-                <circle id="Ellipse 1" cx="26.5" cy="38.5" r="7.5" fill="white" />
-                <rect id="Rectangle 2" x="17" y="48" width="19" height="24" rx="3" fill="white" />
-                <rect id="Rectangle 3" x="45" y="35" width="32" height="6" rx="3" fill="white" />
-                <rect id="Rectangle 4" x="45" y="44" width="32" height="6" rx="3" fill="white" />
-                <rect id="Rectangle 5" x="45" y="53" width="32" height="6" rx="3" fill="white" />
-                <rect id="Rectangle 6" x="45" y="62" width="32" height="6" rx="3" fill="white" />
-              </g>
-              <g id="mainCard">
-                <rect id="Rectangle 1_2" x="18" y="25" width="85" height="51" rx="5" fill="#70D7FF" />
-                <circle id="Ellipse 1_2" cx="43.5" cy="38.5" r="7.5" fill="white" />
-                <rect id="Rectangle 2_2" x="34" y="48" width="19" height="24" rx="3" fill="white" />
-                <rect id="Rectangle 3_2" x="62" y="35" width="32" height="6" rx="3" fill="white" />
-                <rect id="Rectangle 4_2" x="62" y="44" width="32" height="6" rx="3" fill="white" />
-                <rect id="Rectangle 5_2" x="62" y="53" width="32" height="6" rx="3" fill="white" />
-                <rect id="Rectangle 6_2" x="62" y="62" width="32" height="6" rx="3" fill="white" />
-              </g>
-              <g id="altCardTop">
-                <rect id="Rectangle 1_3" x="34" y="25" width="85" height="51" rx="5" fill="#FF976E" />
-                <circle id="Ellipse 1_3" cx="59.5" cy="38.5" r="7.5" fill="white" />
-                <rect id="Rectangle 2_3" x="50" y="48" width="19" height="24" rx="3" fill="white" />
-                <rect id="Rectangle 3_3" x="78" y="35" width="32" height="6" rx="3" fill="white" />
-                <rect id="Rectangle 4_3" x="78" y="44" width="32" height="6" rx="3" fill="white" />
-                <rect id="Rectangle 5_3" x="78" y="53" width="32" height="6" rx="3" fill="white" />
-                <rect id="Rectangle 6_3" x="78" y="62" width="32" height="6" rx="3" fill="white" />
-              </g>
-            </g>
-          </svg>
-        </h2>
+      {/* Right column: Content */}
+      <div className="flex flex-col justify-center space-y-6">
+        <div>
+          <h1 className="text-foreground mb-2">
+            Isaac Beale
+          </h1>
+          <p className="font-mono text-accent text-sm mb-6">
+            backend_engineer <span className="text-primary">|</span> system_architect <span className="text-primary">|</span> problem_solver
+          </p>
+        </div>
 
-        <div className="bg-white rounded-lg p-6 shadow-md">
-          <p className="leading-relaxed text-gray-700">
+        <div className="card-terminal space-y-4">
+          <p className="leading-relaxed">
             My name is Isaac Beale and I hold an M.S. in software engineering with a focus in cybersecurity from
             Arizona State University along with a B.S. in industrial engineering with a minor in computer science from Oregon State University.
             My path to becoming a software engineer was unconventional, starting in a different discipline, and finding a passion for programming
             late into my undergraduate studies.
           </p>
-          <p className="leading-relaxed text-gray-700 mt-4">
+          <p className="leading-relaxed">
             I&apos;m a full-stack software engineer at Apple with a backend focus, working primarily with Django and Angular.
             My expertise spans database design, system architecture, analyzing technical trade-offs, and root cause analysis.
             I&apos;m equally comfortable diving deep into backend systems as I am working across the full stack to deliver complete solutions.
@@ -81,12 +94,12 @@ export default function About() {
           </p>
 
           {showMore && (
-            <div className="mt-4 pt-4 border-t border-gray-200">
-              <p className="leading-relaxed text-gray-600 italic">
+            <div className="mt-6 pt-6 border-t border-border space-y-4">
+              <p className="leading-relaxed text-muted-foreground italic text-sm">
                 This next section is a bit more introspective about my career path. I&apos;ll probably move this to a blog section on
                 this site once I build it, so employers feel free to skip this unless you&apos;re interested:
               </p>
-              <p className="leading-relaxed text-gray-700 mt-4">
+              <p className="leading-relaxed">
                 Something I find interesting about my career path is that I never anticipated focusing on web development.
                 I&apos;ve enjoyed most programming challenges I&apos;ve faced in my courses, from building shells to creating GUIs in Java Swing to writing scripts for
                 attack and defense CTFs. At the end of the day, I just enjoy creating well-designed systems that solve difficult problems—ones that can be extended
@@ -103,15 +116,18 @@ export default function About() {
 
           <button
             onClick={() => setShowMore(!showMore)}
-            className="mt-4 text-primary hover:text-secondary transition-colors font-semibold flex items-center gap-2"
+            className="mt-6 font-mono text-sm text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group"
           >
+            <span className="text-muted-foreground">$</span>
             {showMore ? (
               <>
-                Show less <FontAwesomeIcon icon={faChevronUp} className="text-sm" />
+                <span>collapse</span>
+                <ChevronUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
               </>
             ) : (
               <>
-                Read more about my journey <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
+                <span>read_more</span>
+                <ChevronDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
               </>
             )}
           </button>
@@ -119,4 +135,24 @@ export default function About() {
       </div>
     </div>
   )
+}
+
+// Social link component
+function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="group relative flex items-center justify-center w-12 h-12 rounded-lg bg-card border border-border hover:border-primary transition-all hover:scale-110"
+    >
+      <div className="text-muted-foreground group-hover:text-primary transition-colors">
+        {icon}
+      </div>
+      {/* Tooltip */}
+      <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 font-mono text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+        {label}
+      </span>
+    </a>
+  );
 }

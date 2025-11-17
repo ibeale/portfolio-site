@@ -1,11 +1,9 @@
 "use client"
 
-import React, { RefObject, useCallback } from "react";
+import React, { RefObject, useCallback, useState } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import ProjectImage from "./projectImage";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub} from '@fortawesome/free-brands-svg-icons'
-import { faExternalLinkAlt, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { Github, ExternalLink, ChevronLeft, ChevronRight, Code2 } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 
 interface ProjectProps {
@@ -20,6 +18,7 @@ interface ProjectProps {
 
 export default function Project({ name, description, filePaths, link, githubLink, techStack, refProp }: ProjectProps) {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+    const [isExpanded, setIsExpanded] = useState(false);
 
     const scrollPrev = useCallback(() => {
         if (emblaApi) emblaApi.scrollPrev()
@@ -38,9 +37,9 @@ export default function Project({ name, description, filePaths, link, githubLink
                     href={link}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/80 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all font-mono text-sm group hover:scale-105"
                 >
-                    <FontAwesomeIcon icon={faExternalLinkAlt} className="text-sm" />
+                    <ExternalLink className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                     <span>Live Demo</span>
                 </a>
             )}
@@ -49,9 +48,9 @@ export default function Project({ name, description, filePaths, link, githubLink
                     href={githubLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border text-foreground rounded-lg hover:border-primary transition-all font-mono text-sm group hover:scale-105"
                 >
-                    <FontAwesomeIcon icon={faGithub} className="text-sm" />
+                    <Github className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                     <span>GitHub</span>
                 </a>
             )}
@@ -59,18 +58,36 @@ export default function Project({ name, description, filePaths, link, githubLink
     );
 
     const infoElement = (
-        <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100 h-full flex flex-col">
-            <div ref={refProp}>
-                <h3 className="text-2xl mb-3">{name}</h3>
+        <div className="card-terminal h-full flex flex-col group">
+            <div ref={refProp} className="flex items-center gap-3 mb-4">
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                    <Code2 className="w-5 h-5" />
+                </div>
+                <div>
+                    <h3 className="text-2xl font-serif">{name}</h3>
+                </div>
             </div>
             <div className="flex-1">
-                <p className="text-gray-700 leading-relaxed mb-4">{description}</p>
+                <p className="leading-relaxed text-muted-foreground mb-4">
+                    {isExpanded ? description : `${description.slice(0, 200)}${description.length > 200 ? '...' : ''}`}
+                </p>
+                {description.length > 200 && (
+                    <button
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className="text-primary hover:text-primary/80 font-mono text-sm mb-4 flex items-center gap-1"
+                    >
+                        <span className="text-muted-foreground">$</span>
+                        {isExpanded ? 'show_less' : 'read_more'}
+                    </button>
+                )}
             </div>
-            <div className="mt-auto">
-                <h6 className="text-sm font-semibold text-gray-600 mb-2">Tech Stack:</h6>
+            <div className="mt-auto pt-4 border-t border-border">
+                <h4 className="font-mono text-xs text-muted-foreground mb-3 flex items-center gap-2">
+                    <span className="text-primary">›</span> Tech Stack
+                </h4>
                 <div className="flex flex-wrap gap-2 mb-2">
                     {techArray.map((tech) => (
-                        <Badge key={tech} variant="default" size="sm">{tech}</Badge>
+                        <Badge key={tech} variant="outline" size="sm">{tech}</Badge>
                     ))}
                 </div>
                 {linksElement}
@@ -79,7 +96,7 @@ export default function Project({ name, description, filePaths, link, githubLink
     );
 
     const carousel = filePaths.length > 0 ? (
-        <div className="relative rounded-lg overflow-hidden shadow-md border border-gray-100">
+        <div className="relative rounded-lg overflow-hidden border border-border group">
             <div className="overflow-hidden" ref={emblaRef}>
                 <div className="flex">
                     {filePaths.map((filePath) => (
@@ -93,23 +110,23 @@ export default function Project({ name, description, filePaths, link, githubLink
                 <>
                     <button
                         onClick={scrollPrev}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-primary/90 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors shadow-lg"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-card/90 backdrop-blur-sm border border-border text-foreground rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all shadow-lg opacity-0 group-hover:opacity-100"
                         aria-label="Previous slide"
                     >
-                        <FontAwesomeIcon icon={faChevronLeft} />
+                        <ChevronLeft className="w-5 h-5" />
                     </button>
                     <button
                         onClick={scrollNext}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary/90 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary transition-colors shadow-lg"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-card/90 backdrop-blur-sm border border-border text-foreground rounded-full w-10 h-10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all shadow-lg opacity-0 group-hover:opacity-100"
                         aria-label="Next slide"
                     >
-                        <FontAwesomeIcon icon={faChevronRight} />
+                        <ChevronRight className="w-5 h-5" />
                     </button>
                 </>
             )}
         </div>
     ) : link && link.includes('youtube.com') ? (
-        <div className="relative rounded-lg overflow-hidden shadow-md border border-gray-100 aspect-video">
+        <div className="relative rounded-lg overflow-hidden border border-border aspect-video group">
             <iframe
                 className="w-full h-full"
                 src={link.replace('watch?v=', 'embed/')}

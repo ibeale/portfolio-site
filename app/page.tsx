@@ -10,6 +10,7 @@ import Education from "../components/experience/education";
 import Employment from "../components/experience/employment";
 import Projects from "../components/projects/projects";
 import Project, { HoopFinderProps, SolverProps, KeypersProps, OSUCapstoneProps, ASUMapsProps, DigyProps, LifeMapsProps } from "../components/projects/project";
+import { Footer } from "../components/footer";
 
 export default function HomePage() {
   const aboutRef = React.useRef<HTMLDivElement>(null);
@@ -32,8 +33,8 @@ export default function HomePage() {
         skillsRef={skillsRef}
         projectsRef={projectsRef}
       />
-      <div className="container mx-auto px-4 mt-16">
-        <Section refProp={aboutRef} className="flex items-center">
+      <div className="container mx-auto px-4 pt-32 pb-16 max-w-7xl">
+        <Section refProp={aboutRef} className="flex items-center min-h-[80vh]">
           <About />
         </Section>
         <Section refProp={experienceRef}>
@@ -57,6 +58,7 @@ export default function HomePage() {
           </Projects>
         </Section>
       </div>
+      <Footer />
     </>
   )
 }

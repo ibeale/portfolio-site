@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { Timeline, TimelineItem } from "./timeline";
 import { Badge } from "@/components/ui/badge";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface ProjectCardProps {
     title: string;
@@ -16,16 +15,23 @@ function ProjectCard({ title, description, defaultExpanded = false }: ProjectCar
     const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
     return (
-        <div className="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-200 hover:border-primary/30 transition-colors">
-            <div className="flex justify-between items-start cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
-                <h5 className="font-bold text-gray-800 flex-1">{title}</h5>
-                <FontAwesomeIcon
-                    icon={isExpanded ? faChevronUp : faChevronDown}
-                    className="text-primary mt-1 ml-2"
-                />
-            </div>
+        <div className="bg-muted/30 rounded-lg p-4 mb-3 border border-border hover:border-primary/50 transition-all group">
+            <button
+                className="flex justify-between items-start w-full text-left"
+                onClick={() => setIsExpanded(!isExpanded)}
+            >
+                <h5 className="font-mono text-sm font-semibold text-foreground flex-1 group-hover:text-primary transition-colors">
+                    <span className="text-primary mr-2">›</span>
+                    {title}
+                </h5>
+                {isExpanded ? (
+                    <ChevronUp className="w-4 h-4 text-primary mt-0.5 ml-2 flex-shrink-0" />
+                ) : (
+                    <ChevronDown className="w-4 h-4 text-muted-foreground group-hover:text-primary mt-0.5 ml-2 flex-shrink-0 transition-colors" />
+                )}
+            </button>
             {isExpanded && (
-                <div className="mt-3 text-gray-700 leading-relaxed">
+                <div className="mt-3 text-muted-foreground leading-relaxed text-sm pl-5 animate-fadeIn">
                     {description}
                 </div>
             )}
@@ -65,17 +71,19 @@ export default function Employment() {
                 align="left"
             >
                 <div className="mb-6">
-                    <h6 className="text-sm font-semibold text-gray-600 mb-3">Technologies Used:</h6>
+                    <h4 className="font-mono text-xs text-muted-foreground mb-3 flex items-center gap-2">
+                        <span className="text-primary">›</span> Tech Stack
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                         {appleTechnologies.map((tech) => (
-                            <Badge key={tech} variant="primary" size="sm">{tech}</Badge>
+                            <Badge key={tech} variant="outline" size="sm">{tech}</Badge>
                         ))}
                     </div>
                 </div>
 
-                <h6 className="text-lg font-bold text-gray-800 mb-4">Human Engineering Software</h6>
+                <h4 className="text-lg font-serif mb-4 text-foreground">Human Engineering Software</h4>
 
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                     Working on a small, agile internal tools team focused on innovation and developer experience. Responsibilities include collaborating with stakeholders to gather requirements, designing and pitching technical solutions, and building and maintaining a diverse portfolio of tools and libraries that support internal workflows.
                 </p>
             </TimelineItem>
@@ -88,23 +96,25 @@ export default function Employment() {
                 align="right"
             >
                 <div className="mb-6">
-                    <h6 className="text-sm font-semibold text-gray-600 mb-3">Technologies Used:</h6>
+                    <h4 className="font-mono text-xs text-muted-foreground mb-3 flex items-center gap-2">
+                        <span className="text-primary">›</span> Tech Stack
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                         {intelTechnologies.map((tech) => (
-                            <Badge key={tech} variant="primary" size="sm">{tech}</Badge>
+                            <Badge key={tech} variant="outline" size="sm">{tech}</Badge>
                         ))}
                     </div>
                 </div>
 
-                <h6 className="text-lg font-bold text-gray-800 mb-4">Key Project: Integration Technician Request System</h6>
+                <h4 className="text-lg font-serif mb-4 text-foreground">Key Project: Integration Technician Request System</h4>
 
-                <p className="text-gray-700 leading-relaxed mb-4">
+                <p className="text-muted-foreground leading-relaxed mb-6">
                     Designed and implemented a web application for employees at Intel to make requests to the integration team.
                     This system was built to replace the email standard that was currently in place. Started as a prototype for Intel
                     in Aloha, OR and now supports 8 different intel locations including 4 outside of the US.
                 </p>
 
-                <div className="space-y-3">
+                <div className="space-y-2">
                     <ProjectCard
                         title="New Request Form"
                         description="Built a dynamic form with dropdowns, text inputs, and a rich text editor. Dropdowns populate based on previous selections to support different request types with varying requirements. Input fields are customizable by integration team management to adapt to changing needs."

@@ -1,5 +1,8 @@
+'use client';
+
 import React from "react";
 import { SkillBadge } from "@/components/ui/badge";
+import { Terminal, Layers, Server, Cloud } from "lucide-react";
 
 interface SkillLevel {
   name: string;
@@ -21,30 +24,42 @@ export default function Skills() {
     { name: "C#", value: 40, category: "Languages" },
   ];
 
+  const categoryIcons: Record<string, React.ReactNode> = {
+    "Languages": <Terminal className="w-5 h-5" />,
+    "Frontend": <Layers className="w-5 h-5" />,
+    "Backend": <Server className="w-5 h-5" />,
+    "Cloud": <Cloud className="w-5 h-5" />,
+  };
+
   const categories = Array.from(new Set(skills.map(s => s.category)));
 
   return (
-    <div className="w-full">
-      <div className="mb-8">
-        <h2 className="inline-flex items-center">
-          Skills
-          <svg className="inline-block mx-3" xmlns="http://www.w3.org/2000/svg" width="75" height="75" version="1.1" x="0px" y="0px" viewBox="0 0 20 25" enableBackground="new 0 0 20 20">
-            <g>
-              <path fill="#70D7FF" d="M19.5,0.5h-19C0.2,0.5,0,0.7,0,1v4c0,0.3,0.2,0.5,0.5,0.5h19C19.8,5.5,20,5.3,20,5V1   C20,0.7,19.8,0.5,19.5,0.5z M19,4.5h-3v-3h3V4.5z" />
-              <path fill="#70D7FF" d="M19.5,7.5h-19C0.2,7.5,0,7.7,0,8v4c0,0.3,0.2,0.5,0.5,0.5h19c0.3,0,0.5-0.2,0.5-0.5V8   C20,7.7,19.8,7.5,19.5,7.5z M19,11.5h-7v-3h7V11.5z" />
-              <path fill="#70D7FF" d="M19.5,14.5h-19C0.2,14.5,0,14.7,0,15v4c0,0.3,0.2,0.5,0.5,0.5h19c0.3,0,0.5-0.2,0.5-0.5v-4   C20,14.7,19.8,14.5,19.5,14.5z M19,18.5H8v-3h11V18.5z" />
-            </g>
-          </svg>
-        </h2>
+    <div className="w-full space-y-8">
+      <div className="flex items-center gap-4">
+        <h2 className="text-foreground">Skills</h2>
+        <div className="font-mono text-sm text-muted-foreground">
+          <span className="text-primary">$</span> ls -la /skills
+        </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-6">
         {categories.map(category => (
-          <div key={category} className="bg-white rounded-lg p-6 shadow-md border border-gray-100">
-            <h4 className="text-lg font-bold text-gray-800 mb-4">{category}</h4>
-            <div className="flex flex-wrap gap-3">
+          <div key={category} className="card-terminal group">
+            <div className="flex items-center gap-3 mb-4 pb-3 border-b border-border">
+              <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                {categoryIcons[category]}
+              </div>
+              <div>
+                <h3 className="text-xl font-serif">{category}</h3>
+                <p className="font-mono text-xs text-muted-foreground">
+                  {skills.filter(s => s.category === category).length} items
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2">
               {skills
                 .filter(skill => skill.category === category)
+                .sort((a, b) => b.value - a.value)
                 .map(skill => (
                   <SkillBadge key={skill.name} skill={skill.name} proficiency={skill.value} />
                 ))}
@@ -53,19 +68,24 @@ export default function Skills() {
         ))}
       </div>
 
-      <div className="mt-6 text-center">
-        <div className="inline-flex gap-6 text-sm text-gray-600">
+      {/* Legend */}
+      <div className="card-terminal">
+        <div className="flex items-center gap-2 mb-3">
+          <Terminal className="w-4 h-4 text-muted-foreground" />
+          <span className="font-mono text-sm text-muted-foreground">Proficiency Legend</span>
+        </div>
+        <div className="flex flex-wrap gap-6 font-mono text-sm">
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full bg-[#FF976E]/20 border border-[#FF976E]/30"></div>
-            <span>Advanced</span>
+            <span className="text-xs">●●●</span>
+            <span className="text-muted-foreground">Advanced (75-100%)</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full bg-[#70D7FF]/20 border border-[#70D7FF]/30"></div>
-            <span>Intermediate</span>
+            <span className="text-xs">●●○</span>
+            <span className="text-muted-foreground">Intermediate (50-74%)</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full bg-gray-100 border border-gray-200"></div>
-          <span>Familiar</span>
+            <span className="text-xs">●○○</span>
+            <span className="text-muted-foreground">Familiar (&lt;50%)</span>
           </div>
         </div>
       </div>

@@ -2,8 +2,31 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { Spectral, JetBrains_Mono, Bricolage_Grotesque } from 'next/font/google';
+import { ClientLayout } from '@/components/client-layout';
 
 config.autoAddCss = false;
+
+const spectral = Spectral({
+  weight: ['400', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-spectral',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  weight: ['400', '500', '600'],
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+});
+
+const bricolageGrotesque = Bricolage_Grotesque({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-bricolage',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "Isaac Beale's Portfolio",
@@ -40,9 +63,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
-        {children}
+    <html lang="en" className={`${spectral.variable} ${jetbrainsMono.variable} ${bricolageGrotesque.variable}`}>
+      <body className="antialiased font-sans">
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
