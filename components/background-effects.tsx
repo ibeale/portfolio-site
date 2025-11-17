@@ -36,7 +36,6 @@ export function BackgroundEffects() {
 
     const branches: Branch[] = [];
     const maxBranches = 8; // Keep sparse
-    let frameCount = 0;
 
     // Earthy color palette
     const colors = [
@@ -51,8 +50,7 @@ export function BackgroundEffects() {
       x?: number,
       y?: number,
       angle?: number,
-      width?: number,
-      parent?: Branch
+      width?: number
     ): Branch => {
       return {
         x: x ?? Math.random() * canvas.width,
@@ -126,8 +124,7 @@ export function BackgroundEffects() {
               endX,
               endY,
               branch.angle + angleVariation,
-              branch.width * 0.7,
-              branch
+              branch.width * 0.7
             )
           );
         }
@@ -149,8 +146,6 @@ export function BackgroundEffects() {
 
     let animationId: number;
     const animate = () => {
-      frameCount++;
-
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw all branches

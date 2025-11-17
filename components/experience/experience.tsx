@@ -1,5 +1,4 @@
 import React from "react";
-import { Briefcase, GraduationCap } from "lucide-react";
 
 interface ExperienceProps {
     children: React.ReactNode;

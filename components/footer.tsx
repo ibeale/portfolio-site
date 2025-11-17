@@ -8,7 +8,7 @@ export function Footer() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="font-mono text-sm text-muted-foreground">
-            <span className="text-primary">$</span> echo "Made with ❤️ by Isaac Beale"
+            <span className="text-primary">$</span> echo &ldquo;Made with ❤️ by Isaac Beale&rdquo;
           </div>
           <div className="font-mono text-xs text-muted-foreground">
             © {currentYear} Isaac Beale. All rights reserved.
